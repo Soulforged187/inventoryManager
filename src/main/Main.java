@@ -6,13 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import javax.xml.namespace.QName;
-
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FirstScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/InventoryManagementSystem.fxml"));
         primaryStage.setTitle("First View");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();

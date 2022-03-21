@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FirstScreen implements Initializable{
+public class InventoryManagementSystem implements Initializable{
     public Label TheLabel;
 
     @Override
