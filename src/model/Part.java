@@ -1,6 +1,5 @@
-/**
- * Supplied class Part.java
- */
+package model;
+
 
 /**
  *
@@ -102,8 +101,8 @@ public abstract class Part {
     /**
      * @param max the max to set
      */
-    public void setMax(int max) {
-        this.max = max;
+    public void setMax(int max) { this.max = max;
     }
 
 }
+
