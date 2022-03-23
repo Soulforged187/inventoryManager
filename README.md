@@ -1,0 +1,3 @@
+# inventoryManager
+
+Readme to follow 
