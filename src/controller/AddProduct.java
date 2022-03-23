@@ -25,4 +25,12 @@ public class AddProduct {
     public Label labelAddProductName;
     public TextField textFieldAddProductName;
     public Label labelAddProductInv;
+    public TextField textFieldAddProductInv;
+    public Label labelAddProductPrice;
+    public TextField textFieldAddProductPrice;
+    public Label labelAddProductMin;
+    public TextField textFieldAddProductMin;
+    public Label lblAddProductMax;
+    public TextField textFieldAddProductMax;
+    public Button buttonAddProductClear;
 }
