@@ -13,24 +13,20 @@ public class AddProduct {
     public TableColumn tableViewAddProductDeleteNameColumn;
     public TableColumn tableViewAddProductDeleteInvColumn;
     public TableColumn tableViewAddProductDeletePriceColumn;
-    public Label labelAddProductScreen;
+
     public Button buttonAddProductSearch;
-    public TextField textFieldAddProductSearch;
     public Button buttonAddProductAdd;
     public Button buttonAddProductDelete;
     public Button buttonAddProductCancel;
     public Button buttonAddProductSave;
-    public Label labelAddProductID;
-    public Label labelAddProductIDNumber;
-    public Label labelAddProductName;
-    public TextField textFieldAddProductName;
-    public Label labelAddProductInv;
-    public TextField textFieldAddProductInv;
-    public Label labelAddProductPrice;
-    public TextField textFieldAddProductPrice;
-    public Label labelAddProductMin;
-    public TextField textFieldAddProductMin;
-    public Label lblAddProductMax;
-    public TextField textFieldAddProductMax;
     public Button buttonAddProductClear;
+
+
+    public TextField textFieldAddProductName;
+    public TextField textFieldAddProductInv;
+    public TextField textFieldAddProductPrice;
+    public TextField textFieldAddProductMin;
+    public TextField textFieldAddProductSearch;
+    public TextField textFieldAddProductMax;
+
 }
