@@ -7,7 +7,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
             prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.ModifyPart">
-    <Label fx:id="labelModifyPartScreen" layoutX="20.0" layoutY="14.0" prefHeight="25.0" prefWidth="107.0"
+    <Label  layoutX="20.0" layoutY="14.0" prefHeight="25.0" prefWidth="107.0"
            text="Modify Part">
         <font>
             <Font name="System Bold" size="18.0"/>
@@ -16,19 +16,19 @@
     <RadioButton fx:id="radioModifyPartInHouse" layoutX="136.0" layoutY="19.0" mnemonicParsing="false" text="In-House"/>
     <RadioButton fx:id="radioModifyPartOutsourced" layoutX="239.0" layoutY="19.0" mnemonicParsing="false"
                  text="Outsourced"/>
-    <Label fx:id="labelModifyPartID" layoutX="35.0" layoutY="67.0" text="ID">
+    <Label layoutX="35.0" layoutY="67.0" text="ID">
         <font>
             <Font size="14.0"/>
         </font>
     </Label>
-    <Label fx:id="labelModifyPartIDNumber" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="57.0"
+    <Label  alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="57.0"
            prefHeight="40.0" prefWidth="150.0"
            style="-fx-border-width: 1; -fx-border-color: black; -fx-border-style: solid; -fx-padding: 5;">
         <font>
             <Font size="14.0"/>
         </font>
     </Label>
-    <Label fx:id="lblModifyPartName" layoutX="35.0" layoutY="122.0" text="Name">
+    <Label layoutX="35.0" layoutY="122.0" text="Name">
         <font>
             <Font size="14.0"/>
         </font>
@@ -38,7 +38,7 @@
             <Font size="14.0"/>
         </font>
     </TextField>
-    <Label fx:id="lblModifyPartInv" layoutX="35.0" layoutY="177.0" text="Inv">
+    <Label layoutX="35.0" layoutY="177.0" text="Inv">
         <font>
             <Font size="14.0"/>
         </font>
@@ -48,7 +48,7 @@
             <Font size="14.0"/>
         </font>
     </TextField>
-    <Label fx:id="lblModifyPartPrice" layoutX="35.0" layoutY="232.0" text="Price/Cost">
+    <Label layoutX="35.0" layoutY="232.0" text="Price/Cost">
         <font>
             <Font size="14.0"/>
         </font>
@@ -58,7 +58,7 @@
             <Font size="14.0"/>
         </font>
     </TextField>
-    <Label fx:id="lblModifyPartMin" layoutX="35.0" layoutY="287.0" text="Min">
+    <Label layoutX="35.0" layoutY="287.0" text="Min">
         <font>
             <Font size="14.0"/>
         </font>
@@ -68,7 +68,7 @@
             <Font size="14.0"/>
         </font>
     </TextField>
-    <Label fx:id="lblModifyPartMax" layoutX="257.0" layoutY="287.0" text="Max">
+    <Label  layoutX="257.0" layoutY="287.0" text="Max">
         <font>
             <Font size="14.0"/>
         </font>
@@ -78,7 +78,7 @@
             <Font size="14.0"/>
         </font>
     </TextField>
-    <Label fx:id="lblModifyPartDyn" layoutX="35.0" layoutY="339.0" text="Company Name">
+    <Label  layoutX="35.0" layoutY="339.0" text="Company Name">
         <font>
             <Font size="14.0"/>
         </font>

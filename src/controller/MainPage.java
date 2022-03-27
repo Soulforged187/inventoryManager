@@ -13,17 +13,6 @@ import java.util.ResourceBundle;
 
 
 public class MainPage implements Initializable {
-    // Labels, actions not required
-    @FXML
-    private Label labelParts;
-    @FXML
-    private Label labelProducts;
-    @FXML
-    private Label inventoryManagementSystemMain;
-    // anchor
-    @FXML
-    private AnchorPane root;
-
     // table view Part
     @FXML
     private TableView<Part> tableViewParts;
@@ -88,5 +77,34 @@ public class MainPage implements Initializable {
     }
 
 
+    public void addPartHandler(ActionEvent actionEvent) {
+    }
+
+    public void modifyPartHandler(ActionEvent actionEvent) {
+    }
+
+    public void deletePart(ActionEvent actionEvent) {
+    }
+
+    public void addProductsHandler(ActionEvent actionEvent) {
+    }
+
+    public void modfiyPartsHandler(ActionEvent actionEvent) {
+    }
+
+    public void deleteProductHandler(ActionEvent actionEvent) {
+    }
+
+    public void runClearPartsHandler(ActionEvent actionEvent) {
+    }
+
+    public void clearProductsHandler(ActionEvent actionEvent) {
+    }
+
+    public void runProductsSearchHandler(ActionEvent actionEvent) {
+    }
+
+    public void runPartsSearchHandler(ActionEvent actionEvent) {
+    }
 }
 
