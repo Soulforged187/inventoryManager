@@ -2,7 +2,6 @@ package model;
 
 
 /**
- *
  * @author Place Your Name Here
  */
 public abstract class Part {
@@ -12,6 +11,7 @@ public abstract class Part {
     private int stock;
     private int min;
     private int max;
+
     public Part(int id, String name, double price, int stock, int min, int max) {
         this.id = id;
         this.name = name;
@@ -101,7 +101,8 @@ public abstract class Part {
     /**
      * @param max the max to set
      */
-    public void setMax(int max) { this.max = max;
+    public void setMax(int max) {
+        this.max = max;
     }
 
 }
