@@ -89,5 +89,15 @@ public class Inventory {
         }
         return true;
     }
+    public static boolean deletePart(Product selectedPart) {
+        Part partDelete = lookUpPart(selectedPart.getId());
+
+        if (partDelete == null) {
+            System.out.println(lookUpProduct(selectedPart.getId()));
+        } else {
+            allParts.remove(partDelete);
+            System.out.println("Part Deleted");
+        }
+        return true;
 }
 

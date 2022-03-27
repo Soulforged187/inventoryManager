@@ -4,63 +4,50 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.MainPage">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPage">
     <TableView fx:id="tableViewParts" layoutX="14.0" layoutY="113.0" prefHeight="200.0" prefWidth="414.0">
         <columns>
-            <TableColumn fx:id="tableViewPartsIDColumn" prefWidth="100.0" text="ID"/>
-            <TableColumn fx:id="tableViewPartsNameColumn" prefWidth="100.0" text="Name"/>
-            <TableColumn fx:id="tableViewPartsInvColumn" prefWidth="100.0" text="Inv."/>
-            <TableColumn fx:id="tableViewPartsPriceColumn" prefWidth="100.0" text="Price"/>
+            <TableColumn fx:id="tableViewPartsIDColumn" prefWidth="100.0" text="ID" />
+            <TableColumn fx:id="tableViewPartsNameColumn" prefWidth="100.0" text="Name" />
+            <TableColumn fx:id="tableViewPartsInvColumn" prefWidth="100.0" text="Inv." />
+            <TableColumn fx:id="tableViewPartsPriceColumn" prefWidth="100.0" text="Price" />
         </columns>
     </TableView>
     <TableView fx:id="tableViewProducts" layoutX="436.0" layoutY="113.0" prefHeight="200.0" prefWidth="400.0">
         <columns>
-            <TableColumn fx:id="tableViewProductsIDColumn" prefWidth="100.0" text="ID"/>
-            <TableColumn fx:id="tableViewProductsNameColumn" prefWidth="100.0" text="Name"/>
-            <TableColumn fx:id="tableViewProductsInvColumn" prefWidth="100.0" text="Inv."/>
-            <TableColumn fx:id="tableViewProductsPriceColumn" prefWidth="100.0" text="Price"/>
+            <TableColumn fx:id="tableViewProductsIDColumn" prefWidth="100.0" text="ID" />
+            <TableColumn fx:id="tableViewProductsNameColumn" prefWidth="100.0" text="Name" />
+            <TableColumn fx:id="tableViewProductsInvColumn" prefWidth="100.0" text="Inv." />
+            <TableColumn fx:id="tableViewProductsPriceColumn" prefWidth="100.0" text="Price" />
         </columns>
     </TableView>
     <Label fx:id="labelParts" layoutX="14.0" layoutY="78.0" text="Parts">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
     <Label fx:id="labelProducts" layoutX="436.0" layoutY="78.0" text="Products">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Label fx:id="inventoryManagementSystemMain" layoutX="37.0" layoutY="21.0" prefHeight="35.0" prefWidth="400.0"
-           text="Inventory Management System">
+    <Label fx:id="inventoryManagementSystemMain" layoutX="37.0" layoutY="21.0" prefHeight="35.0" prefWidth="400.0" text="Inventory Management System">
         <font>
-            <Font name="System Bold" size="25.0"/>
+            <Font name="System Bold" size="25.0" />
         </font>
     </Label>
-    <Button fx:id="buttonSearchParts" layoutX="302.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="52.0" text="Search"/>
-    <TextField fx:id="textFieldSearchParts" layoutX="155.0" layoutY="79.0" prefHeight="25.0" prefWidth="140.0"/>
-    <Button fx:id="buttonSearchProducts" layoutX="724.0" layoutY="79.0" mnemonicParsing="false" text="Search"/>
-    <TextField fx:id="textFieldSearchProducts" layoutX="577.0" layoutY="79.0" prefHeight="25.0" prefWidth="140.0"/>
-    <Button fx:id="buttonAddParts" layoutX="225.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="60.0" text="Add"/>
-    <Button fx:id="buttonModifyParts" layoutX="295.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="60.0" text="Modify"/>
-    <Button fx:id="buttonDeleteParts" layoutX="366.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="60.0" text="Delete"/>
-    <Button fx:id="buttonAddProducts" layoutX="629.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="60.0" text="Add"/>
-    <Button fx:id="buttonModifyProducts" layoutX="701.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="60.0" text="Modify"/>
-    <Button fx:id="buttonDeleteProducts" layoutX="769.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="60.0" text="Delete"/>
-    <Button fx:id="buttonClearSearchParts" layoutX="358.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="52.0" text="Clear"/>
-    <Button fx:id="buttonClearSearchProducts" layoutX="780.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0"
-            prefWidth="52.0" text="Clear"/>
-    <Button fx:id="buttonExitProgram" layoutX="761.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0"
-            prefWidth="75.0" text="Exit"/>
+    <Button fx:id="buttonSearchParts" layoutX="302.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Search" />
+    <TextField fx:id="textFieldSearchParts" layoutX="155.0" layoutY="79.0" prefHeight="25.0" prefWidth="140.0" />
+    <Button fx:id="buttonSearchProducts" layoutX="724.0" layoutY="79.0" mnemonicParsing="false" text="Search" />
+    <TextField fx:id="textFieldSearchProducts" layoutX="577.0" layoutY="79.0" prefHeight="25.0" prefWidth="140.0" />
+    <Button fx:id="buttonAddParts" layoutX="225.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
+    <Button fx:id="buttonModifyParts" layoutX="295.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Modify" />
+    <Button fx:id="buttonDeleteParts" layoutX="366.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+    <Button fx:id="buttonAddProducts" layoutX="629.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
+    <Button fx:id="buttonModifyProducts" layoutX="701.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Modify" />
+    <Button fx:id="buttonDeleteProducts" layoutX="769.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+    <Button fx:id="buttonClearSearchParts" layoutX="358.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Clear" />
+    <Button fx:id="buttonClearSearchProducts" layoutX="780.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Clear" />
+    <Button fx:id="buttonExitProgram" layoutX="761.0" layoutY="351.0" mnemonicParsing="false" onAction="#exitHandler" prefHeight="35.0" prefWidth="75.0" text="Exit" />
 
 </AnchorPane>

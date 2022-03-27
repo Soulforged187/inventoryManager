@@ -71,7 +71,10 @@ public class MainPage implements Initializable {
     @FXML
     private Button buttonClearSearchProducts;
     @FXML
-    private Button buttonExitProgram;
+    public void exitHandler(ActionEvent event){
+        System.out.println("Exiting Program");
+        System.exit(0);
+    }
     @FXML
     private Button buttonSearchParts;
     @FXML
