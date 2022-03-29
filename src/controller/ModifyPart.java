@@ -1,19 +1,29 @@
 package controller;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 public class ModifyPart {
-    public RadioButton radioModifyPartInHouse;
-    public RadioButton radioModifyPartOutsourced;
-    public TextField textFieldModifyPartName;
-    public TextField textFieldModifyPartInv;
-    public TextField textFieldModifyPartPrice;
-    public TextField textFieldModifyPartMin;
-    public TextField textFieldModifyPartMax;
-    public TextField textFieldModifyPartDyn;
-    public Button buttonModifyPartSave;
-    public Button btnModifyPartCancel;
+    @FXML
+    private RadioButton radioModifyPartInHouse;
+    @FXML
+    private RadioButton radioModifyPartOutsourced;
+    @FXML
+    private TextField textFieldModifyPartName;
+    @FXML
+    private TextField textFieldModifyPartInv;
+    @FXML
+    private TextField textFieldModifyPartPrice;
+    @FXML
+    private TextField textFieldModifyPartMin;
+    @FXML
+    private TextField textFieldModifyPartMax;
+    @FXML
+    private TextField textFieldModifyPartDyn;
+    @FXML
+    private Button buttonModifyPartSave;
+    @FXML
+    private Button buttonModifyPartCancel;;
 }

@@ -89,7 +89,7 @@ public class MainPage implements Initializable {
     public void addProductsHandler(ActionEvent actionEvent) {
     }
 
-    public void modfiyPartsHandler(ActionEvent actionEvent) {
+    public void modifyPartsHandler(ActionEvent actionEvent) {
     }
 
     public void deleteProductHandler(ActionEvent actionEvent) {

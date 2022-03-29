@@ -3,9 +3,6 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-/**
- * This section still needs the following added: getassoicatedpart,deleteassociated part, getallassoicated parts
- **/
 
 public class Product {
     private static int id;
@@ -36,7 +33,7 @@ public class Product {
      * @param id the id to set
      */
     public void setId(int id) {
-        this.id = id;
+        Product.id = id;
     }
 
     /**
@@ -84,7 +81,7 @@ public class Product {
     /**
      * @return the min
      */
-    public int getMinin() {
+    public int getMin() {
         return min;
     }
 

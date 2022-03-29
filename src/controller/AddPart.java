@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,16 +12,26 @@ import java.util.ResourceBundle;
 
 public class AddPart implements Initializable {
 
-    public RadioButton radioAddPartInHouse;
-    public RadioButton radioAddPartOutsourced;
-    public TextField textFieldAddPartName;
-    public TextField textFieldAddPartInv;
-    public TextField textFieldAddPartPrice;
-    public TextField textFieldAddPartMin;
-    public TextField textFieldAddPartMax;
-    public TextField textFieldAddPartDyn;
-    public Button buttonAddPartSave;
-    public Button btnAddPartCancel;
+    @FXML
+    private RadioButton radioAddPartInHouse;
+    @FXML
+    private RadioButton radioAddPartOutsourced;
+    @FXML
+    private TextField textFieldAddPartName;
+    @FXML
+    private TextField textFieldAddPartInv;
+    @FXML
+    private TextField textFieldAddPartPrice;
+    @FXML
+    private TextField textFieldAddPartMin;
+    @FXML
+    private TextField textFieldAddPartMax;
+    @FXML
+    private TextField textFieldAddPartDyn;
+    @FXML
+    private Button buttonAddPartSave;
+    @FXML
+    private Button btnAddPartCancel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

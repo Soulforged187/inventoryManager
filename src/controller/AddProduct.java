@@ -1,32 +1,76 @@
 package controller;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import model.Inventory;
+import model.Part;
+import model.Product;
 
-public class AddProduct {
-    public TableView tableViewAddProductAdd;
-    public TableColumn tableViewAddProductAddIDColumn;
-    public TableColumn tableViewAddProductAddNameColumn;
-    public TableColumn tableViewAddProductAddInvColumn;
-    public TableColumn tableViewAddProductAddPriceColumn;
-    public TableView tableViewAddProductDelete;
-    public TableColumn tableViewAddProductDeleteIDColumn;
-    public TableColumn tableViewAddProductDeleteNameColumn;
-    public TableColumn tableViewAddProductDeleteInvColumn;
-    public TableColumn tableViewAddProductDeletePriceColumn;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    public Button buttonAddProductSearch;
-    public Button buttonAddProductAdd;
-    public Button buttonAddProductDelete;
-    public Button buttonAddProductCancel;
-    public Button buttonAddProductSave;
-    public Button buttonAddProductClear;
+public class AddProduct implements Initializable {
+    Stage stage;
+    Parent scene;
+    @FXML
+    private TableView <Product> tableViewAddProductAdd;
+    @FXML
+    private TableColumn<Product, Integer> tableViewAddProductAddIDColumn;
+    @FXML
+    private TableColumn <Product, String>tableViewAddProductAddNameColumn;
+    @FXML
+    private TableColumn <Product, Integer>tableViewAddProductAddInvColumn;
+    @FXML
+    private TableColumn <Product, Double>tableViewAddProductAddPriceColumn;
+  
+    @FXML
+    private TableView tableViewAddProductDelete;
+    @FXML
+    private TableColumn tableViewAddProductDeleteIDColumn;
+    @FXML
+    private TableColumn tableViewAddProductDeleteNameColumn;
+    @FXML
+    private TableColumn tableViewAddProductDeleteInvColumn;
+    @FXML
+    private TableColumn tableViewAddProductDeletePriceColumn;
+
+    @FXML
+    private Button buttonAddProductSearch;
+    @FXML
+    private Button buttonAddProductAdd;
+    @FXML
+    private Button buttonAddProductDelete;
+    @FXML
+    private Button buttonAddProductCancel;
+    @FXML
+    private Button buttonAddProductSave;
+    @FXML
+    private Button buttonAddProductClear;
 
 
-    public TextField textFieldAddProductName;
-    public TextField textFieldAddProductInv;
-    public TextField textFieldAddProductPrice;
-    public TextField textFieldAddProductMin;
-    public TextField textFieldAddProductSearch;
-    public TextField textFieldAddProductMax;
+    @FXML
+    private TextField textFieldAddProductName;
+    @FXML
+    private TextField textFieldAddProductInv;
+    @FXML
+    private TextField textFieldAddProductPrice;
+    @FXML
+    private TextField textFieldAddProductMin;
+    @FXML
+    private TextField textFieldAddProductSearch;
+    @FXML
+    private TextField textFieldAddProductMax;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
