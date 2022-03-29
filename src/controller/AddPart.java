@@ -31,7 +31,7 @@ public class AddPart implements Initializable {
     @FXML
     private Button buttonAddPartSave;
     @FXML
-    private Button btnAddPartCancel;
+    private Button buttonAddPartCancel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
