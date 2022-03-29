@@ -83,5 +83,5 @@
         </font>
     </TextField>
     <Button fx:id="buttonAddPartSave" layoutX="260.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Save" />
-    <Button fx:id="btnAddPartCancel" layoutX="340.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
+    <Button fx:id="buttonAddPartCancel" layoutX="340.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
 </AnchorPane>
