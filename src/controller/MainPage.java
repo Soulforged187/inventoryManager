@@ -90,7 +90,13 @@ public class MainPage implements Initializable {
         stage.show();
     }
 
-    public void deletePart(ActionEvent actionEvent) {
+    public void deletePart(ActionEvent actionEvent) throws IOException{
+        Part selectedPart = partTable.getSelectionModel().getSelectedItem();
+
+        if (selectedPart == null){
+            var alert = new Alert(Alert.AlertType.WARNING)
+        }
+
     }
 
     public void deleteProductHandler(ActionEvent actionEvent) {
