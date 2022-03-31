@@ -125,7 +125,7 @@ public class MainPage implements Initializable {
 //untested
     public void runProductsSearchHandler(ActionEvent actionEvent) {
         String q = textFieldSearchProducts.getText();
-        ObservableList<Product> products=searchByProductName(q);
+        ObservableList<Product> products=Inventory.lookUpProduct(q);
         tableViewProducts.setItems(products);
         textFieldSearchProducts.setText("");
     }
@@ -133,37 +133,13 @@ public class MainPage implements Initializable {
     public void runPartsSearchHandler(ActionEvent actionEvent) {
 
         String q = textFieldSearchParts.getText();
-        ObservableList<Part> parts=searchByPartName(q);
+        ObservableList<Part> parts=Inventory.lookUpPart(q);
         tableViewParts.setItems(parts);
         textFieldSearchParts.setText("");
     }
 
 
-//untested
-    private ObservableList<Product> searchByProductName(String partialName) {
-        ObservableList<Product> namedProducts = FXCollections.observableArrayList();
-        ObservableList<Product>  allProducts = Inventory.getAllProducts();
-        for(Product product:allProducts) {
-            if (product.getName().contains(partialName)){
-                namedProducts.add(product);
-            }
-        }
 
-    return namedProducts;
-}
-
-//untested
-    private ObservableList<Part> searchByPartName(String partialName) {
-        ObservableList<Part> namedPart = FXCollections.observableArrayList();
-        ObservableList<Part>  allParts = Inventory.getAllParts();
-        for(Part part:allParts) {
-            if (part.getName().contains(partialName)){
-                namedPart.add(part);
-            }
-        }
-
-        return namedPart;
-    }
     //initialize
 
     @Override
