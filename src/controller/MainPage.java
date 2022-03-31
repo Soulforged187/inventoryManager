@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,45 +54,47 @@ public class MainPage implements Initializable {
     private TextField textFieldSearchParts;
     @FXML
     private TextField textFieldSearchProducts;
- //Buttons
+
+    //Buttons
     @FXML
-   private void addPartHandler(ActionEvent actionEvent) throws IOException {
-        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+    private void addPartHandler(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/view/AddPart.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
     }
+
     @FXML
     private void modifyPartHandler(ActionEvent actionEvent) throws IOException {
-        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/view/ModifyParts.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
     }
 
     @FXML
-    private void exitHandler(ActionEvent event){
+    private void exitHandler(ActionEvent event) {
         System.out.println("Exiting Program");
         System.exit(0);
     }
 
     @FXML
-    private void addProductsHandler(ActionEvent actionEvent)  throws IOException {
-        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+    private void addProductsHandler(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/view/AddProduct.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
     }
 
     @FXML
-    private void modifyProductsHandler(ActionEvent actionEvent)  throws IOException {
-        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+    private void modifyProductsHandler(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/view/ModifyProducts.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
     }
 
-   public void deletePartHandler(ActionEvent actionEvent) throws IOException{
+    public void deletePartHandler(ActionEvent actionEvent) throws IOException {
       /*  Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
 
        if (selectedPart == null) {
@@ -104,14 +108,12 @@ public class MainPage implements Initializable {
             alert.setTitle("Part Deletion");
             alert.setHeaderText("Confirm Deletion?");
             alert.setContentText("Are you sure you want to delete?");
-            alert.showAndWait().ifPresent()-> {
-                if(ButtonType() == ButtonType.OK){
-                    Inventory.deletePart(selectedPart);
-                }
-            }
+            alert.showAndWait();
+        }
+        */
 
-*/
     }
+
     public void deleteProductHandler(ActionEvent actionEvent) {
     }
 
@@ -120,13 +122,50 @@ public class MainPage implements Initializable {
 
     public void clearProductsHandler(ActionEvent actionEvent) {
     }
-
+//untested
     public void runProductsSearchHandler(ActionEvent actionEvent) {
+        String q = textFieldSearchProducts.getText();
+
+        ObservableList<Product> products=searchByProductName(q);
+        tableViewProducts.setItems(products);
+        textFieldSearchProducts.setText("");
     }
 
     public void runPartsSearchHandler(ActionEvent actionEvent) {
+
+        String q = textFieldSearchParts.getText();
+        ObservableList<Part> parts=searchByPartName(q);
+        tableViewParts.setItems(parts);
+        textFieldSearchParts.setText("");
     }
 
+
+//untested
+    private ObservableList<Product> searchByProductName(String partialName) {
+        ObservableList<Product> namedProducts = FXCollections.observableArrayList();
+        ObservableList<Product>  allProducts = Inventory.getAllProducts();
+        for(Product product:allProducts) {
+            if (product.getName().contains(partialName)){
+                namedProducts.add(product);
+            }
+        }
+
+    return namedProducts;
+}
+
+//untested
+    private ObservableList<Part> searchByPartName(String partialName) {
+        ObservableList<Part> namedPart = FXCollections.observableArrayList();
+        ObservableList<Part>  allParts = Inventory.getAllParts();
+        for(Part part:allParts) {
+            if (part.getName().contains(partialName)){
+                namedPart.add(part);
+            }
+        }
+
+        return namedPart;
+    }
+    //initialize
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

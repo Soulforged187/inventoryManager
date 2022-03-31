@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyProduct">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyProduct">
     <TableView fx:id="tableViewModifyProductAdd" layoutX="346.0" layoutY="65.0" prefHeight="150.0" prefWidth="400.0">
         <columns>
             <TableColumn fx:id="tableViewModifyProductAddIDColumn" prefWidth="100.0" text="ID" />
@@ -25,7 +25,7 @@
     </TableView>
     <Label layoutX="77.0" layoutY="34.0" prefHeight="40.0" prefWidth="170.0" text="Modify Product">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0" />
         </font>
     </Label>
     <TextField fx:id="textModifyProductSearch" layoutX="469.0" layoutY="29.0" prefHeight="25.0" prefWidth="140.0" />
@@ -37,7 +37,7 @@
 
     <Label layoutX="20.0" layoutY="118.0" text="ID">
         <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
         </font>
     </Label>
     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="108.0" prefHeight="40.0" prefWidth="150.0" style="-fx-border-width: 1; -fx-border-color: black; -fx-border-style: solid; -fx-padding: 5;">
@@ -47,7 +47,7 @@
     </Label>
     <Label layoutX="20.0" layoutY="171.0" text="Name">
         <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
         </font>
     </Label>
     <TextField fx:id="textFieldModifyProductName" layoutX="77.0" layoutY="161.0" prefHeight="40.0" prefWidth="150.0">
@@ -57,7 +57,7 @@
     </TextField>
     <Label layoutX="20.0" layoutY="224.0" text="Inv">
         <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
         </font>
     </Label>
     <TextField fx:id="textFieldModifyProductInv" layoutX="77.0" layoutY="214.0" prefHeight="40.0" prefWidth="150.0">
@@ -67,7 +67,7 @@
     </TextField>
     <Label layoutX="20.0" layoutY="277.0" text="Price">
         <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
         </font>
     </Label>
     <TextField fx:id="textFieldModifyProductPrice" layoutX="77.0" layoutY="267.0" prefHeight="40.0" prefWidth="150.0">
@@ -77,7 +77,7 @@
     </TextField>
     <Label layoutX="20.0" layoutY="330.0" text="Min">
         <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
         </font>
     </Label>
     <TextField fx:id="textFieldModifyProductMin" layoutX="77.0" layoutY="320.0" prefHeight="40.0" prefWidth="100.0">
@@ -87,7 +87,7 @@
     </TextField>
     <Label layoutX="187.0" layoutY="330.0" text="Max">
         <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
         </font>
     </Label>
     <TextField fx:id="textFieldModifyProductMax" layoutX="226.0" layoutY="320.0" prefHeight="40.0" prefWidth="100.0">
