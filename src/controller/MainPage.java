@@ -2,17 +2,27 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import model.Inventory;
 import model.Part;
 import model.Product;
-
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+// largest errors were caused by simple things such as forgetting @FXML  before a tab causing all views to fail and stop the program from compiling, other common errors included missing \ for views
+//  logic errors:
 
 public class MainPage implements Initializable {
+    Stage stage;
+    Parent scene;
+
     // table view Part
     @FXML
     private TableView<Part> tableViewParts;
@@ -42,54 +52,45 @@ public class MainPage implements Initializable {
     private TextField textFieldSearchParts;
     @FXML
     private TextField textFieldSearchProducts;
-    //Buttons
+ //Buttons
     @FXML
-    private Button buttonAddParts;
+   private void addPartHandler(ActionEvent actionEvent) throws IOException {
+        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/AddPart.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
+    }
     @FXML
-    private Button buttonModifyParts;
-    @FXML
-    private Button buttonDeleteParts;
-    @FXML
-    private Button buttonAddProducts;
-    @FXML
-    private Button buttonModifyProducts;
-    @FXML
-    private Button buttonDeleteProducts;
-    @FXML
-    private Button buttonClearSearchParts;
-    @FXML
-    private Button buttonClearSearchProducts;
-    @FXML
-    public void exitHandler(ActionEvent event){
+    private void modifyPartHandler(ActionEvent actionEvent) throws IOException {
+        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/ModifyParts.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
+    }
+
+@FXML
+    private void exitHandler(ActionEvent event){
         System.out.println("Exiting Program");
         System.exit(0);
     }
+
     @FXML
-    private Button buttonSearchParts;
-    @FXML
-    private Button buttonSearchProducts;
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Controller Initialized");
-
+    private void addProductsHandler(ActionEvent actionEvent)  throws IOException {
+        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/AddProduct.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
-
-    public void addPartHandler(ActionEvent actionEvent) {
-    }
-
-    public void modifyPartHandler(ActionEvent actionEvent) {
+    @FXML
+    private void modifyProductsHandler(ActionEvent actionEvent)  throws IOException {
+        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/ModifyProducts.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     public void deletePart(ActionEvent actionEvent) {
-    }
-
-    public void addProductsHandler(ActionEvent actionEvent) {
-    }
-
-    public void modifyPartsHandler(ActionEvent actionEvent) {
     }
 
     public void deleteProductHandler(ActionEvent actionEvent) {
@@ -106,5 +107,24 @@ public class MainPage implements Initializable {
 
     public void runPartsSearchHandler(ActionEvent actionEvent) {
     }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Controller Initialized");
+        tableViewPartsIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableViewPartsNameColumn.setCellValueFactory((new PropertyValueFactory<>("name")));
+        tableViewPartsInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        tableViewPartsPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        tableViewParts.setItems(Inventory.getAllParts());
+        tableViewProductsIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableViewProductsNameColumn.setCellValueFactory((new PropertyValueFactory<>("name")));
+        tableViewProductsInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        tableViewProductsPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        tableViewProducts.setItems(Inventory.getAllProducts());
+    }
+
+
+
 }
 

@@ -1,20 +1,25 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
 import model.Product;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ModifyProduct implements Initializable {
-    Stage stage;
+public class ModifyProduct {
     Parent scene;
+    Stage stage;
 
     @FXML
     private TableView<Product> tableViewModifyProductAdd;
@@ -65,8 +70,22 @@ public class ModifyProduct implements Initializable {
     @FXML
     private TextField textFieldModifyProductMax;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    public void modifyProductCancelHandler(ActionEvent actionEvent) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Alert");
+        alert.setContentText("Are you sure you want to cancel?");
+        alert.showAndWait();
+        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
+    }
+
+    public void addProductsModifyHandler(ActionEvent actionEvent) throws IOException {
+        stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/AddProduct.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 }

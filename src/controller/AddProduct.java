@@ -14,12 +14,14 @@ import model.Inventory;
 import model.Part;
 import model.Product;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddProduct implements Initializable {
-    Stage stage;
+public class AddProduct  {
     Parent scene;
+    Stage stage;
+
     @FXML
     private TableView <Product> tableViewAddProductAdd;
     @FXML
@@ -69,8 +71,15 @@ public class AddProduct implements Initializable {
     @FXML
     private TextField textFieldAddProductMax;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    public void addProductCancelHandler(ActionEvent actionEvent) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Alert");
+        alert.setContentText("Are you sure you want to cancel?");
+        alert.showAndWait();
+        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 }

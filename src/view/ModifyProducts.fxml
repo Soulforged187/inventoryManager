@@ -23,14 +23,14 @@
 
         </columns>
     </TableView>
-    <Label  layoutX="77.0" layoutY="34.0" prefHeight="40.0" prefWidth="170.0" text="Modify Product">
+    <Label layoutX="77.0" layoutY="34.0" prefHeight="40.0" prefWidth="170.0" text="Modify Product">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
     <TextField fx:id="textModifyProductSearch" layoutX="469.0" layoutY="29.0" prefHeight="25.0" prefWidth="140.0" />
-    <Button fx:id="buttonModifyProductAdd" layoutX="686.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
-    <Button fx:id="buttonModifyProductCancel" layoutX="686.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
+    <Button fx:id="buttonModifyProductAdd" layoutX="686.0" layoutY="221.0" mnemonicParsing="false" onAction="#addProductsModifyHandler" prefHeight="25.0" prefWidth="60.0" text="Add" />
+    <Button fx:id="buttonModifyProductCancel" layoutX="686.0" layoutY="461.0" mnemonicParsing="false" onAction="#modifyProductCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
     <Button fx:id="buttonModifyProductSave" layoutX="617.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Save" />
     <Button fx:id="buttonModifyProductSearch" layoutX="617.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Search" />
     <Button fx:id="buttonModifyProductDelete" layoutX="686.0" layoutY="425.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Delete" />

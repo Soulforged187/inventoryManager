@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddPart">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddPart">
     <Label layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="100.0" text="Add Part" textAlignment="CENTER">
         <font>
             <Font name="System Bold" size="18.0" />
@@ -83,5 +83,5 @@
         </font>
     </TextField>
     <Button fx:id="buttonAddPartSave" layoutX="260.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Save" />
-    <Button fx:id="btnAddPartCancel" layoutX="340.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
+    <Button fx:id="buttonAddPartCancel" layoutX="340.0" layoutY="402.0" mnemonicParsing="false" onAction="#addPartCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
 </AnchorPane>
