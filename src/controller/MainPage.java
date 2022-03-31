@@ -125,7 +125,6 @@ public class MainPage implements Initializable {
 //untested
     public void runProductsSearchHandler(ActionEvent actionEvent) {
         String q = textFieldSearchProducts.getText();
-
         ObservableList<Product> products=searchByProductName(q);
         tableViewProducts.setItems(products);
         textFieldSearchProducts.setText("");
