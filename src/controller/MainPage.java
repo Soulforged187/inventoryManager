@@ -68,7 +68,7 @@ public class MainPage implements Initializable {
         stage.show();
     }
 
-@FXML
+    @FXML
     private void exitHandler(ActionEvent event){
         System.out.println("Exiting Program");
         System.exit(0);
@@ -90,15 +90,28 @@ public class MainPage implements Initializable {
         stage.show();
     }
 
-    public void deletePart(ActionEvent actionEvent) throws IOException{
-        Part selectedPart = partTable.getSelectionModel().getSelectedItem();
+   public void deletePartHandler(ActionEvent actionEvent) throws IOException{
+      /*  Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
 
-        if (selectedPart == null){
-            var alert = new Alert(Alert.AlertType.WARNING)
+       if (selectedPart == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("A part must be selected to delete");
         }
 
-    }
+        else{
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Part Deletion");
+            alert.setHeaderText("Confirm Deletion?");
+            alert.setContentText("Are you sure you want to delete?");
+            alert.showAndWait().ifPresent()-> {
+                if(ButtonType() == ButtonType.OK){
+                    Inventory.deletePart(selectedPart);
+                }
+            }
 
+*/
+    }
     public void deleteProductHandler(ActionEvent actionEvent) {
     }
 
