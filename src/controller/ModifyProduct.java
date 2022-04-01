@@ -40,31 +40,7 @@ public class ModifyProduct {
     private TableColumn  <Part, Integer> tableViewModifyProductDeleteIDColumn;
 
 
-    @FXML
-    private Button buttonAddProductClear;
-    @FXML
-    private Button buttonModifyProductAdd;
-    @FXML
-    private Button buttonModifyProductCancel;
-    @FXML
-    private Button buttonModifyProductSave;
-    @FXML
-    private Button buttonModifyProductSearch;
-    @FXML
-    private Button buttonModifyProductDelete;
 
-    @FXML
-    private TextField textModifyProductSearch;
-    @FXML
-    private TextField textFieldModifyProductName;
-    @FXML
-    private TextField textFieldModifyProductInv;
-    @FXML
-    private TextField textFieldModifyProductPrice;
-    @FXML
-    private TextField textFieldModifyProductMin;
-    @FXML
-    private TextField textFieldModifyProductMax;
 
 
     public void modifyProductCancelHandler(ActionEvent actionEvent) throws IOException {
