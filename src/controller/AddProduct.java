@@ -27,7 +27,6 @@ public class AddProduct  {
     private TableColumn <Product, Integer>tableViewAddProductAddInvColumn;
     @FXML
     private TableColumn <Product, Double>tableViewAddProductAddPriceColumn;
-  
     @FXML
     private TableView <Part> tableViewAddProductDelete;
     @FXML
@@ -39,32 +38,7 @@ public class AddProduct  {
     @FXML
     private TableColumn <Part, Double> tableViewAddProductDeletePriceColumn;
 
-    @FXML
-    private Button buttonAddProductSearch;
-    @FXML
-    private Button buttonAddProductAdd;
-    @FXML
-    private Button buttonAddProductDelete;
-    @FXML
-    private Button buttonAddProductCancel;
-    @FXML
-    private Button buttonAddProductSave;
-    @FXML
-    private Button buttonAddProductClear;
 
-
-    @FXML
-    private TextField textFieldAddProductName;
-    @FXML
-    private TextField textFieldAddProductInv;
-    @FXML
-    private TextField textFieldAddProductPrice;
-    @FXML
-    private TextField textFieldAddProductMin;
-    @FXML
-    private TextField textFieldAddProductSearch;
-    @FXML
-    private TextField textFieldAddProductMax;
 
 
     public void addProductCancelHandler(ActionEvent actionEvent) throws IOException {

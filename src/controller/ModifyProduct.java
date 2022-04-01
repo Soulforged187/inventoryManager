@@ -68,10 +68,7 @@ public class ModifyProduct {
 
 
     public void modifyProductCancelHandler(ActionEvent actionEvent) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Alert");
-        alert.setContentText("Are you sure you want to cancel?");
-        alert.showAndWait();
+        Inventory.confirmationScreen("Cancel", "Are you sure you want to Cancel?");
         stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
         stage.setScene(new Scene(scene));

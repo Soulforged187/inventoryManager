@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import model.Inventory;
@@ -19,24 +16,27 @@ public class AddPart  {
     Stage stage;
 
     @FXML
-    private RadioButton radioAddPartInHouse;
+    private Label labelInOrOutPart;
     @FXML
-    private RadioButton radioAddPartOutsourced;
-    @FXML
-    private TextField textFieldAddPartName;
-    @FXML
-    private TextField textFieldAddPartInv;
-    @FXML
-    private TextField textFieldAddPartPrice;
-    @FXML
-    private TextField textFieldAddPartMin;
-    @FXML
-    private TextField textFieldAddPartMax;
-    @FXML
-    private TextField textFieldAddPartDyn;
-    @FXML
-    private Button buttonAddPartSave;
+    private TextField textFieldParIds;
 
+
+    @FXML
+    void buttonAddPartSave(ActionEvent actionEvent)throws IOException{
+
+    }
+// Had to redo these buttons several times as the first two methods didn't work, as clicking the buttons do not cause an event,
+// ended up implementing them as action events and corrected the error.
+    @FXML
+    void inHouseRadio(ActionEvent actionEvent){
+       labelInOrOutPart.setText("Machine ID");
+       textFieldParIds.setPromptText("Machine ID");
+   }
+    @FXML
+    void outsourcedRadio (ActionEvent actionEvent){
+        labelInOrOutPart.setText("Company Name");
+        textFieldParIds.setPromptText("Company Name");
+    }
 
     public void addPartCancelHandler(ActionEvent actionEvent) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
