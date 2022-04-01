@@ -95,33 +95,29 @@ public class MainPage implements Initializable {
     }
 
     public void deletePartHandler(ActionEvent actionEvent) throws IOException {
-      /*  Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
-
-       if (selectedPart == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("A part must be selected to delete");
+        if(tableViewParts.getSelectionModel().isEmpty()) {
+            Inventory.informationScreen("Error", "No Part was Selected", "Please choose a part from the list");
+            return;
         }
+        if(Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?")){
+             Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
+            Inventory.deletePart(selectedPart);
 
-        else{
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Part Deletion");
-            alert.setHeaderText("Confirm Deletion?");
-            alert.setContentText("Are you sure you want to delete?");
-            alert.showAndWait();
         }
-        */
-
     }
 
     public void deleteProductHandler(ActionEvent actionEvent) {
+        if (tableViewProducts.getSelectionModel().isEmpty()) {
+            Inventory.informationScreen("Error", "No Part was Selected", "Please choose a part from the list");
+            return;
+        }
+        if (Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?")) {
+            Product selectedProduct = tableViewProducts.getSelectionModel().getSelectedItem();
+            Inventory.deleteProduct(selectedProduct);
+
+        }
     }
 
-    public void runClearPartsHandler(ActionEvent actionEvent) {
-    }
-
-    public void clearProductsHandler(ActionEvent actionEvent) {
-    }
 //untested
     public void runProductsSearchHandler(ActionEvent actionEvent) {
         String q = textFieldSearchProducts.getText();

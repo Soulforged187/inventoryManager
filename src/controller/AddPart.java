@@ -11,7 +11,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
-
+import model.Inventory;
 
 public class AddPart  {
 

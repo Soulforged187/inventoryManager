@@ -3,6 +3,10 @@ package model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
 
 public class Inventory {
 
@@ -89,7 +93,7 @@ public class Inventory {
         }
         return true;
     }
-    public static boolean deletePart(Product selectedPart) {
+    public static boolean deletePart(Part selectedPart) {
         Part partDelete = lookUpPart(selectedPart.getId());
 
         if (partDelete == null) {
@@ -100,5 +104,21 @@ public class Inventory {
         }
         return true;
 }
+   public static boolean confirmationScreen(String title,  String content){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText("Confirm ?");
+        alert.setContentText(content);
+        Optional<ButtonType> result=alert.showAndWait();
+        return result.get() == ButtonType.OK;
+    }
+   public static boolean informationScreen(String title, String header, String content){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        Optional<ButtonType> result=alert.showAndWait();
+        return result.get() == ButtonType.OK;
+    }
 }
 

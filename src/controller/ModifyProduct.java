@@ -3,19 +3,15 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
 import model.Product;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 public class ModifyProduct {
     Parent scene;
@@ -31,17 +27,17 @@ public class ModifyProduct {
     private TableColumn <Product, Integer> tableViewModifyProductAddInvColumn;
 
     @FXML
-    private TableView <Product>tableViewModifyProductDelete;
+    private TableView <Part>tableViewModifyProductDelete;
     @FXML
-    private TableColumn <Product, Double>tableViewModifyProductAddPriceColumn;
+    private TableColumn <Part, Double>tableViewModifyProductAddPriceColumn;
     @FXML
-    private TableColumn tableViewModifyProductDeleteNameColumn;
+    private TableColumn <Part,String>tableViewModifyProductDeleteNameColumn;
     @FXML
-    private TableColumn tableViewModifyProductDeleteInvColumn;
+    private TableColumn <Part, Integer>tableViewModifyProductDeleteInvColumn;
     @FXML
-    private TableColumn<Product, Double> tableViewModifyProductDeletePriceColumn;
+    private TableColumn<Part, Double> tableViewModifyProductDeletePriceColumn;
     @FXML
-    private TableColumn tableViewModifyProductDeleteIDColumn;
+    private TableColumn  <Part, Integer> tableViewModifyProductDeleteIDColumn;
 
 
     @FXML

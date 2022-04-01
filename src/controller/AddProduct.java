@@ -1,22 +1,17 @@
 package controller;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
 import model.Product;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 public class AddProduct  {
     Parent scene;
@@ -34,15 +29,15 @@ public class AddProduct  {
     private TableColumn <Product, Double>tableViewAddProductAddPriceColumn;
   
     @FXML
-    private TableView tableViewAddProductDelete;
+    private TableView <Part> tableViewAddProductDelete;
     @FXML
-    private TableColumn tableViewAddProductDeleteIDColumn;
+    private TableColumn <Part, Integer> tableViewAddProductDeleteIDColumn;
     @FXML
-    private TableColumn tableViewAddProductDeleteNameColumn;
+    private TableColumn <Part, String>tableViewAddProductDeleteNameColumn;
     @FXML
-    private TableColumn tableViewAddProductDeleteInvColumn;
+    private TableColumn <Part, Integer>tableViewAddProductDeleteInvColumn;
     @FXML
-    private TableColumn tableViewAddProductDeletePriceColumn;
+    private TableColumn <Part, Double> tableViewAddProductDeletePriceColumn;
 
     @FXML
     private Button buttonAddProductSearch;
