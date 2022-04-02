@@ -104,8 +104,8 @@ public class ModifyPart  {
                 Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
             }
 
-        }
-    }*/
+        }*/
+    }
 
 
         public void modifyPartCancelHandler(ActionEvent actionEvent)throws IOException{
