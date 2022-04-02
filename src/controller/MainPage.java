@@ -48,7 +48,6 @@ public class MainPage implements Initializable {
     private TableColumn<Product, Integer> tableViewProductsInvColumn;
     @FXML
     private TableColumn<Product, Double> tableViewProductsPriceColumn;
-
     // search fields
     @FXML
     private TextField textFieldSearchParts;
@@ -68,14 +67,15 @@ public class MainPage implements Initializable {
 
     @FXML
     private void modifyPartHandler(ActionEvent actionEvent) throws IOException {
-            Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
-            if (selectedPart == null) {
-                Inventory.warningScreen("Error", "No Part was Selected.", "Please choose a part from the list");
-            }
-            else stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
+        if (selectedPart == null) {
+            Inventory.warningScreen("Error", "No Part was Selected.", "Please choose a part from the list");
+        } else {
+            stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
             scene = FXMLLoader.load(getClass().getResource("/view/ModifyParts.fxml"));
             stage.setScene(new Scene(scene));
             stage.show();
+        }
     }
     @FXML
     private void exitHandler(ActionEvent event) {
