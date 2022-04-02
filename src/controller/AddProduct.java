@@ -34,15 +34,15 @@ public class AddProduct  implements Initializable {
     @FXML
     private TableColumn <Part, Double>tableViewAddProductAddPriceColumn;
     @FXML
-    private TableView <Product> tableViewAddProductDelete;
+    private TableView <Part> tableViewAddProductDelete;
     @FXML
-    private TableColumn <Product, Integer> tableViewAddProductDeleteIDColumn;
+    private TableColumn <Part, Integer> tableViewAddProductDeleteIDColumn;
     @FXML
-    private TableColumn <Product, String>tableViewAddProductDeleteNameColumn;
+    private TableColumn <Part, String>tableViewAddProductDeleteNameColumn;
     @FXML
-    private TableColumn <Product, Integer>tableViewAddProductDeleteInvColumn;
+    private TableColumn <Part, Integer>tableViewAddProductDeleteInvColumn;
     @FXML
-    private TableColumn <Product, Double> tableViewAddProductDeletePriceColumn;
+    private TableColumn <Part, Double> tableViewAddProductDeletePriceColumn;
     @FXML
     private Label textFieldAddIdn;
     @FXML
@@ -128,7 +128,7 @@ public class AddProduct  implements Initializable {
         tableViewAddProductAddNameColumn.setCellValueFactory((new PropertyValueFactory<>("name")));
         tableViewAddProductAddInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
         tableViewAddProductAddPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-        tableViewAddProductDelete.setItems(Inventory.getAllProducts());
+        tableViewAddProductDelete.setItems(Inventory.getAllParts());
         tableViewAddProductDeleteIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableViewAddProductDeleteNameColumn.setCellValueFactory((new PropertyValueFactory<>("name")));
         tableViewAddProductDeleteInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
