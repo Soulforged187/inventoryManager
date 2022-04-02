@@ -82,28 +82,15 @@ public class Inventory {
         productInventory.set(index, selectedProduct);
     }
 
-    public static boolean deleteProduct(Product selectedProduct) {
+    public static void deleteProduct(Product selectedProduct) {
         Product productDelete = lookUpProduct(selectedProduct.getId());
-
-        if (productDelete == null) {
-            System.out.println(lookUpProduct(selectedProduct.getId()));
-        } else {
-            productInventory.remove(productDelete);
-            System.out.println("Product Deleted");
-        }
-        return true;
+        productInventory.remove(productDelete);
     }
-    public static boolean deletePart(Part selectedPart) {
+    public static void deletePart(Part selectedPart) {
         Part partDelete = lookUpPart(selectedPart.getId());
+        partInventory.remove(partDelete);
+    }
 
-        if (partDelete == null) {
-            System.out.println(lookUpProduct(selectedPart.getId()));
-        } else {
-            partInventory.remove(partDelete);
-            System.out.println("Part Deleted");
-        }
-        return true;
-}
    public static boolean confirmationScreen(String title,  String content){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
@@ -112,13 +99,14 @@ public class Inventory {
         Optional<ButtonType> result=alert.showAndWait();
         return result.get() == ButtonType.OK;
     }
-   public static boolean informationScreen(String title, String header, String content){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+    public static void warningScreen(String title, String header, String content){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
         Optional<ButtonType> result=alert.showAndWait();
-        return result.get() == ButtonType.OK;
+
     }
 }
 

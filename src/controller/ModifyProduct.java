@@ -18,13 +18,13 @@ public class ModifyProduct {
     Stage stage;
 
     @FXML
-    private TableView<Product> tableViewModifyProductAdd;
+    private TableView<Part> tableViewModifyProductAdd;
     @FXML
-    private TableColumn<Product, Integer>tableViewModifyProductAddIDColumn;
+    private TableColumn<Part, Integer>tableViewModifyProductAddIDColumn;
     @FXML
-    private TableColumn<Product, String> tableViewModifyProductAddNameColumn;
+    private TableColumn<Part, String> tableViewModifyProductAddNameColumn;
     @FXML
-    private TableColumn <Product, Integer> tableViewModifyProductAddInvColumn;
+    private TableColumn <Part, Integer> tableViewModifyProductAddInvColumn;
 
     @FXML
     private TableView <Part>tableViewModifyProductDelete;

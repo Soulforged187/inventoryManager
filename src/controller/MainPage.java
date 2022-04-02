@@ -1,6 +1,6 @@
 package controller;
 
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,6 +55,8 @@ public class MainPage implements Initializable {
     @FXML
     private TextField textFieldSearchProducts;
 
+
+
     //Buttons
     @FXML
     private void addPartHandler(ActionEvent actionEvent) throws IOException {
@@ -66,12 +68,19 @@ public class MainPage implements Initializable {
 
     @FXML
     private void modifyPartHandler(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/view/ModifyParts.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        try {
+            Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
+            if (selectedPart == null) {
+                Inventory.warningScreen("Error", "No Part was Selected.", "Please choose a part from the list");
+            }
+            stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/view/ModifyParts.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        } catch (NumberFormatException e) {
+            Inventory.warningScreen("Failure", "Severe", "Failed to Create Window.");
+        }
     }
-
     @FXML
     private void exitHandler(ActionEvent event) {
         System.out.println("Exiting Program");
@@ -96,8 +105,8 @@ public class MainPage implements Initializable {
 
     public void deletePartHandler(ActionEvent actionEvent) throws IOException {
         if(tableViewParts.getSelectionModel().isEmpty()) {
-            Inventory.informationScreen("Error", "No Part was Selected", "Please choose a part from the list");
-            return;
+            Inventory.warningScreen("Error", "No Part was Selected", "Please choose a part from the list");
+
         }
         if(Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?")){
              Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
@@ -108,8 +117,8 @@ public class MainPage implements Initializable {
 
     public void deleteProductHandler(ActionEvent actionEvent) {
         if (tableViewProducts.getSelectionModel().isEmpty()) {
-            Inventory.informationScreen("Error", "No Part was Selected", "Please choose a part from the list");
-            return;
+            Inventory.warningScreen("Error", "No Part was Selected", "Please choose a part from the list");
+
         }
         if (Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?")) {
             Product selectedProduct = tableViewProducts.getSelectionModel().getSelectedItem();
@@ -127,7 +136,6 @@ public class MainPage implements Initializable {
     }
 
     public void runPartsSearchHandler(ActionEvent actionEvent) {
-
         String q = textFieldSearchParts.getText();
         ObservableList<Part> parts=Inventory.lookUpPart(q);
         tableViewParts.setItems(parts);

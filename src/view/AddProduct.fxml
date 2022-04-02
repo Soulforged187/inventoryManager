@@ -26,12 +26,12 @@
             <Font name="System Bold" size="20.0" />
         </font>
     </Label>
-    <Button layoutX="617.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Search" />
-    <TextField  layoutX="467.0" layoutY="29.0" prefHeight="25.0" prefWidth="140.0" />
-    <Button  layoutX="686.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
+    <Button layoutX="686.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Search" />
+    <TextField layoutX="529.0" layoutY="29.0" prefHeight="25.0" prefWidth="140.0" />
+    <Button layoutX="686.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
     <Button layoutX="686.0" layoutY="425.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Delete" />
-    <Button  layoutX="686.0" layoutY="461.0" mnemonicParsing="false" onAction="#addProductCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
-    <Button  layoutX="617.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Save" />
+    <Button layoutX="686.0" layoutY="461.0" mnemonicParsing="false" onAction="#addProductCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
+    <Button layoutX="617.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Save" />
     <Label layoutX="20.0" layoutY="118.0" text="ID">
         <font>
             <Font size="15.0" />
@@ -47,7 +47,7 @@
             <Font size="15.0" />
         </font>
     </Label>
-    <TextField  layoutX="77.0" layoutY="161.0" prefHeight="40.0" prefWidth="150.0" promptText="Product Name">
+    <TextField layoutX="77.0" layoutY="161.0" prefHeight="40.0" prefWidth="150.0" promptText="Product Name">
         <font>
             <Font name="System Italic" size="14.0" />
         </font>
@@ -57,7 +57,7 @@
             <Font size="15.0" />
         </font>
     </Label>
-    <TextField  layoutX="77.0" layoutY="214.0" prefHeight="40.0" prefWidth="150.0" promptText="Inv">
+    <TextField layoutX="77.0" layoutY="214.0" prefHeight="40.0" prefWidth="150.0" promptText="Inv">
         <font>
             <Font name="System Italic" size="14.0" />
         </font>
@@ -67,7 +67,7 @@
             <Font size="15.0" />
         </font>
     </Label>
-    <TextField  layoutX="77.0" layoutY="267.0" prefHeight="40.0" prefWidth="150.0" promptText="Price">
+    <TextField layoutX="77.0" layoutY="267.0" prefHeight="40.0" prefWidth="150.0" promptText="Price">
         <font>
             <Font name="System Italic" size="14.0" />
         </font>
@@ -87,7 +87,7 @@
             <Font size="15.0" />
         </font>
     </Label>
-    <TextField  layoutX="226.0" layoutY="320.0" prefHeight="40.0" prefWidth="100.0" promptText="Max">
+    <TextField layoutX="226.0" layoutY="320.0" prefHeight="40.0" prefWidth="100.0" promptText="Max">
         <font>
             <Font name="System Italic" size="14.0" />
         </font>

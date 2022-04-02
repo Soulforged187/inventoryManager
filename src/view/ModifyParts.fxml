@@ -10,19 +10,19 @@
             <Font name="System Bold" size="20.0" />
         </font>
     </Label>
-    <RadioButton fx:id="radioModifyPartInHouse" layoutX="170.0" layoutY="19.0" mnemonicParsing="false" text="In-House" />
-    <RadioButton fx:id="radioModifyPartOutsourced" layoutX="271.0" layoutY="19.0" mnemonicParsing="false" text="Outsourced" />
-    <Label layoutX="35.0" layoutY="67.0" text="ID">
+    <RadioButton fx:id="radioModifyPartIn" layoutX="170.0" layoutY="19.0" mnemonicParsing="false" onAction="#radioModifyPartInHouse" text="In-House" />
+    <RadioButton fx:id="radioModifyPartOut" layoutX="271.0" layoutY="19.0" mnemonicParsing="false" onAction="#radioModifyPartOutsourced" text="Outsourced" />
+    <Label layoutX="23.0" layoutY="67.0" text="ID">
         <font>
             <Font size="15.0" />
         </font>
     </Label>
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="57.0" prefHeight="40.0" prefWidth="150.0" style="-fx-border-width: 1; -fx-border-color: black; -fx-border-style: solid; -fx-padding: 5;">
+    <Label fx:id="modifyId" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="57.0" prefHeight="40.0" prefWidth="150.0" style="-fx-border-width: 1; -fx-border-color: black; -fx-border-style: solid; -fx-padding: 5;">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
-    <Label layoutX="35.0" layoutY="122.0" text="Name">
+    <Label layoutX="20.0" layoutY="122.0" text="Name">
         <font>
             <Font size="15.0" />
         </font>
@@ -32,7 +32,7 @@
             <Font size="14.0" />
         </font>
     </TextField>
-    <Label layoutX="35.0" layoutY="177.0" text="Inv">
+    <Label layoutX="20.0" layoutY="177.0" text="Inv">
         <font>
             <Font size="15.0" />
         </font>
@@ -42,7 +42,7 @@
             <Font size="14.0" />
         </font>
     </TextField>
-    <Label layoutX="35.0" layoutY="232.0" text="Price/Cost">
+    <Label layoutX="20.0" layoutY="232.0" text="Price/Cost">
         <font>
             <Font size="15.0" />
         </font>
@@ -52,7 +52,7 @@
             <Font size="14.0" />
         </font>
     </TextField>
-    <Label layoutX="35.0" layoutY="287.0" text="Min">
+    <Label layoutX="22.0" layoutY="287.0" text="Min">
         <font>
             <Font size="15.0" />
         </font>
@@ -72,7 +72,7 @@
             <Font size="14.0" />
         </font>
     </TextField>
-    <Label layoutX="35.0" layoutY="339.0" text="Company Name">
+    <Label fx:id="labelModifyPartName" layoutX="16.0" layoutY="342.0" text="Company Name">
         <font>
             <Font size="15.0" />
         </font>
@@ -82,6 +82,6 @@
             <Font size="14.0" />
         </font>
     </TextField>
-    <Button  layoutX="260.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Save" />
-    <Button  layoutX="340.0" layoutY="402.0" mnemonicParsing="false" onAction="#modifyPartCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
+    <Button layoutX="260.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Save" />
+    <Button layoutX="340.0" layoutY="390.0" mnemonicParsing="false" onAction="#modifyPartCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
 </AnchorPane>
