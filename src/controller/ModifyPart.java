@@ -56,7 +56,7 @@ public class ModifyPart  {
 
 
     void buttonSaveHandler(ActionEvent actionEvent)throws IOException{
-        String partName = textFieldModifyPartName.getText();
+   /*     String partName = textFieldModifyPartName.getText();
         String partInventory = textFieldModifyPartInv.getText();
         String partCost = textFieldModifyPartPrice.getText();
         String partMax = textFieldModifyPartMin.getText();
@@ -105,7 +105,7 @@ public class ModifyPart  {
             }
 
         }
-    }
+    }*/
 
 
         public void modifyPartCancelHandler(ActionEvent actionEvent)throws IOException{
