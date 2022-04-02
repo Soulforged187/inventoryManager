@@ -19,8 +19,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        InHousePart book = new InHousePart(1,"Winds of Winter", 35.50, 1, 2, 5, 64);
-        Inventory.addPart(book);
+    /*    InHousePart book = new InHousePart(1,"Winds of Winter", 35.50, 1, 2, 5, 64);
+        Inventory.addPart(book);*/
         launch(args);
     }
 

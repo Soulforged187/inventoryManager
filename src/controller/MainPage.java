@@ -68,18 +68,14 @@ public class MainPage implements Initializable {
 
     @FXML
     private void modifyPartHandler(ActionEvent actionEvent) throws IOException {
-        try {
             Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
             if (selectedPart == null) {
                 Inventory.warningScreen("Error", "No Part was Selected.", "Please choose a part from the list");
             }
-            stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            else stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
             scene = FXMLLoader.load(getClass().getResource("/view/ModifyParts.fxml"));
             stage.setScene(new Scene(scene));
             stage.show();
-        } catch (NumberFormatException e) {
-            Inventory.warningScreen("Failure", "Severe", "Failed to Create Window.");
-        }
     }
     @FXML
     private void exitHandler(ActionEvent event) {
@@ -97,19 +93,25 @@ public class MainPage implements Initializable {
 
     @FXML
     private void modifyProductsHandler(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/view/ModifyProducts.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
-    }
+            Product selectedProduct = tableViewProducts.getSelectionModel().getSelectedItem();
+            if (selectedProduct == null) {
+                Inventory.warningScreen("Error", "No Product was Selected.", "Please choose a product from the list");
+            }
+            else {
+                stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+                scene = FXMLLoader.load(getClass().getResource("/view/ModifyProducts.fxml"));
+                stage.setScene(new Scene(scene));
+                stage.show();
+            }
 
+
+    }
     public void deletePartHandler(ActionEvent actionEvent) throws IOException {
         if(tableViewParts.getSelectionModel().isEmpty()) {
             Inventory.warningScreen("Error", "No Part was Selected", "Please choose a part from the list");
-
         }
         if(Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?")){
-             Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
+            Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
             Inventory.deletePart(selectedPart);
 
         }
@@ -118,7 +120,6 @@ public class MainPage implements Initializable {
     public void deleteProductHandler(ActionEvent actionEvent) {
         if (tableViewProducts.getSelectionModel().isEmpty()) {
             Inventory.warningScreen("Error", "No Part was Selected", "Please choose a part from the list");
-
         }
         if (Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?")) {
             Product selectedProduct = tableViewProducts.getSelectionModel().getSelectedItem();
@@ -127,7 +128,7 @@ public class MainPage implements Initializable {
         }
     }
 
-//untested
+//string search is functioning as intended however ID search is not.
     public void runProductsSearchHandler(ActionEvent actionEvent) {
         String q = textFieldSearchProducts.getText();
         ObservableList<Product> products=Inventory.lookUpProduct(q);
@@ -141,8 +142,6 @@ public class MainPage implements Initializable {
         tableViewParts.setItems(parts);
         textFieldSearchParts.setText("");
     }
-
-
 
     //initialize
 

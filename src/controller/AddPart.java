@@ -83,7 +83,7 @@ public class AddPart  implements Initializable {
                 partMax.length() == 0 || partMin.length() == 0 ||
                 partCompanyName == null || partCompanyName.length() == 0) {
 
-            Inventory.warningScreen("Warning","One or more blank Fields","Fields cannot be blank");
+            Inventory.warningScreen("Warning","Check Fields","Fields cannot be blank, Inputs must be correct type");
             }
 
         else {
@@ -98,7 +98,7 @@ public class AddPart  implements Initializable {
 
                 if (stock < min || stock > max) {
 
-                    Inventory.warningScreen("Warning", "Check Min/Max", "Min Cannot be Greater than Max");
+                    Inventory.warningScreen("Warning", "Check Inv/Min/Max", "Min Cannot be Greater than Max, Inventory cannot exceed Max");
                 } else {
 
 

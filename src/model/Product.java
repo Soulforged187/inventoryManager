@@ -11,10 +11,10 @@ public class Product {
     private int stock;
     private int min;
     private int max;
-    private final ObservableList<Part> associatedParts = FXCollections.observableArrayList();
+    private static final ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
     public Product(int id, String name, double price, int stock, int min, int max) {
-        Product.id = id;
+        this.id = id;
         this.name = name;
         this.price = price;
         this.stock = stock;
@@ -107,7 +107,7 @@ public class Product {
 
     }
 
-    public void addAssociatedParts(Part part) {
+    public static void addAssociatedParts(Part part) {
         associatedParts.add(part);
     }
 
