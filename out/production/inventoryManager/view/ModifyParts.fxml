@@ -82,6 +82,6 @@
             <Font size="14.0" />
         </font>
     </TextField>
-    <Button layoutX="260.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Save" />
+    <Button layoutX="260.0" layoutY="390.0" mnemonicParsing="false" onAction="#saveModifyPartHandler" prefHeight="25.0" prefWidth="60.0" text="Save" />
     <Button layoutX="340.0" layoutY="390.0" mnemonicParsing="false" onAction="#modifyPartCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
 </AnchorPane>

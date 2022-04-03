@@ -19,7 +19,6 @@ public class ModifyPart  {
     Parent scene;
     Stage stage;
 
-
     @FXML
     private RadioButton radioModifyPartIn;
     @FXML
@@ -40,7 +39,7 @@ public class ModifyPart  {
       private TextField textFieldModifyPartMax;
       @FXML
       private Label modifyId;
-
+      int index;
       @FXML
       void radioModifyPartInHouse(ActionEvent actionEvent){
           labelModifyPartName.setText("Machine ID");
@@ -55,8 +54,9 @@ public class ModifyPart  {
     }
 
 
-    void buttonSaveHandler(ActionEvent actionEvent)throws IOException{
-   /*     String partName = textFieldModifyPartName.getText();
+    @FXML
+    void saveModifyPartHandler(ActionEvent actionEvent)throws IOException{
+        String partName = textFieldModifyPartName.getText();
         String partInventory = textFieldModifyPartInv.getText();
         String partCost = textFieldModifyPartPrice.getText();
         String partMax = textFieldModifyPartMin.getText();
@@ -74,7 +74,7 @@ public class ModifyPart  {
         else {
 
             try {
-               int id = Integer.parseInt(modifyId.getText());
+                int id = Integer.parseInt(modifyId.getText());
                 String name = textFieldModifyPartName.getText();
                 double price = Double.parseDouble(textFieldModifyPartInv.getText());
                 int stock = Integer.parseInt(textFieldModifyPartPrice.getText());
@@ -87,26 +87,43 @@ public class ModifyPart  {
                     Inventory.warningScreen("Warning", "Check Min/Max", "Min Cannot be Greater than Max");
                 } else {
 
-                    if (radioModifyPartIn.isSelected()) {
-                        int machineId = Integer.parseInt(textFieldModifyPartDyn.getText());
-                        Inventory.addPart(new InHousePart(++id,name, price, stock, min, max,machineId ));
-                    } else {
-                        Inventory.addPart(new OutSourcedPart(++id, name, price, stock, min, max, companyName));
+                        if (radioModifyPartOut.isSelected()) {
+                            OutSourcedPart outSourcedPart = new OutSourcedPart(id, name, price, stock, max, min, companyName);
+                            outSourcedPart.setId(id);
+                            outSourcedPart.setName(name);
+                            outSourcedPart.setPrice(price);
+                            outSourcedPart.setStock(stock);
+                            outSourcedPart.setMax(max);
+                            outSourcedPart.setMin(min);
+                            outSourcedPart.setCompanyName(companyName);
+
+                            Inventory.updatePart(index, outSourcedPart);
+                        } else {
+                            int machineID = Integer.parseInt(textFieldModifyPartDyn.getText());
+                            InHousePart inHousePart = new InHousePart(id, name, price, stock, max, min, machineID);
+                            inHousePart.setId(id);
+                            inHousePart.setName(name);
+                            inHousePart.setPrice(price);
+                            inHousePart.setStock(stock);
+                            inHousePart.setMax(max);
+                            inHousePart.setMin(min);
+                            inHousePart.setMachineId(machineID);
+
+                            Inventory.updatePart(index, inHousePart);
+                        }
+                        stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+                        scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
+                        stage.setScene(new Scene(scene));
+                        stage.show();
+
                     }
-                    stage = (Stage)((Button) actionEvent.getSource()).getScene().getWindow();
-                    scene = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
-                    stage.setScene(new Scene(scene));
-                    stage.show();
-                }
 
-            } catch (NumberFormatException e) {
-
-                Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
+                } catch(NumberFormatException e) {
+                        Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
             }
 
-        }*/
-    }
-
+            }
+        }
 
         public void modifyPartCancelHandler(ActionEvent actionEvent)throws IOException{
             Inventory.confirmationScreen("Cancel","Are you sure you want to Cancel?");

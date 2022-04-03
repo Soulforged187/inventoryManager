@@ -1,6 +1,5 @@
 package controller;
 
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,6 +64,7 @@ public class MainPage implements Initializable {
         stage.show();
     }
 
+    //checks to see if a part is selected, if none is found then the Warning screen function is called, if however one is selected then the stage is set to Modify Parts screen.
     @FXML
     private void modifyPartHandler(ActionEvent actionEvent) throws IOException {
         Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
@@ -77,12 +77,13 @@ public class MainPage implements Initializable {
             stage.show();
         }
     }
+    // exits the program
     @FXML
     private void exitHandler(ActionEvent event) {
         System.out.println("Exiting Program");
         System.exit(0);
     }
-
+    // opens the Add Product View
     @FXML
     private void addProductsHandler(ActionEvent actionEvent) throws IOException {
         stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
@@ -91,6 +92,7 @@ public class MainPage implements Initializable {
         stage.show();
     }
 
+    //checks to see if a part is selected, if none is found then the Warning screen function is called, if however one is selected then the stage is set to Modify Products screen.
     @FXML
     private void modifyProductsHandler(ActionEvent actionEvent) throws IOException {
             Product selectedProduct = tableViewProducts.getSelectionModel().getSelectedItem();
@@ -106,6 +108,7 @@ public class MainPage implements Initializable {
 
 
     }
+    //Deletes the selected part.
     public void deletePartHandler(ActionEvent actionEvent) throws IOException {
         if(tableViewParts.getSelectionModel().isEmpty()) {
             Inventory.warningScreen("Error", "No Part was Selected", "Please choose a part from the list");
@@ -116,7 +119,7 @@ public class MainPage implements Initializable {
 
         }
     }
-
+    //Deletes the selected product.
     public void deleteProductHandler(ActionEvent actionEvent) {
         if (tableViewProducts.getSelectionModel().isEmpty()) {
             Inventory.warningScreen("Error", "No Part was Selected", "Please choose a part from the list");
@@ -128,20 +131,60 @@ public class MainPage implements Initializable {
         }
     }
 
-//string search is functioning as intended however ID search is not.
+    //search is functioning correctly, it searches through the product list by first reading the string  in the text-field,  then if any part of the string is found it will remake the table and add the found products to the table,
+    // If a number is instead entered it will display products with the same ID but
+    // only if the ID is an exact match.
     public void runProductsSearchHandler(ActionEvent actionEvent) {
-        String q = textFieldSearchProducts.getText();
-        ObservableList<Product> products=Inventory.lookUpProduct(q);
-        tableViewProducts.setItems(products);
-        textFieldSearchProducts.setText("");
-    }
+        String query = textFieldSearchProducts.getText();
+        ObservableList<Product> products = Inventory.lookUpProduct(query);
+        if(products.size() == 0){
+            try {
+                int productId = Integer.parseInt(query);
+                Product product = Inventory.lookUpProduct(productId);
+                if(product != null){
 
-    public void runPartsSearchHandler(ActionEvent actionEvent) {
-        String q = textFieldSearchParts.getText();
-        ObservableList<Part> parts=Inventory.lookUpPart(q);
-        tableViewParts.setItems(parts);
-        textFieldSearchParts.setText("");
+                    tableViewProducts.getSelectionModel().select(product);
+                    return;
+                }
+                Inventory.warningScreen("ID was not found","Valid ID not entered","Entered Product Name or ID" );
+                return;
+            }
+            catch (NumberFormatException ignored){
+                tableViewProducts.getSelectionModel().clearSelection();
+                tableViewProducts.setItems(products);
+            }
+        }
+        tableViewProducts.setItems(products);
+        tableViewProducts.getSelectionModel().clearSelection();
     }
+    //search is functioning correctly, it searches through the product list by first reading the string  in the text-field,  then if any part of the string is found it will remake the table and add the found products to the table,
+    // If a number is instead entered it will display products with the same ID but
+    // only if the ID is an exact match.
+    public void runPartsSearchHandler(ActionEvent actionEvent) {
+            String query = textFieldSearchParts.getText();
+            ObservableList<Part> parts = Inventory.lookUpPart(query);
+            if(parts.size() == 0){
+                try {
+                    int partID = Integer.parseInt(query);
+                    Part part = Inventory.lookUpPart(partID);
+                    if(part != null){
+
+                        tableViewParts.getSelectionModel().select(part);
+                        return;
+                    }
+                    Inventory.warningScreen("ID was not found","Valid ID not entered","Entered Product Name or ID" );
+                    return;
+                }
+                catch (NumberFormatException ignored){
+                    tableViewParts.getSelectionModel().clearSelection();
+                    tableViewParts.setItems(parts);
+                }
+            }
+            tableViewParts.setItems(parts);
+            tableViewParts.getSelectionModel().clearSelection();
+        }
+
+
 
     //initialize
 
@@ -153,6 +196,7 @@ public class MainPage implements Initializable {
         tableViewPartsInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
         tableViewPartsPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         tableViewParts.setItems(Inventory.getAllParts());
+
         tableViewProductsIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableViewProductsNameColumn.setCellValueFactory((new PropertyValueFactory<>("name")));
         tableViewProductsInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
