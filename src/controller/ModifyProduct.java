@@ -71,6 +71,7 @@ public class ModifyProduct implements Initializable {
         String partMin = textFieldModifyProductMin.getText();
         String partMax = textFieldModifyProductMax.getText();
 
+
         if (partName == null || partName.length() == 0 || partInventory == null ||
                 partInventory.length() == 0 || partCost == null || partCost.length() == 0 ||
                 partMax.length() == 0 || partMin.length() == 0) {
@@ -90,13 +91,13 @@ public class ModifyProduct implements Initializable {
                     Inventory.warningScreen("Warning", "Check Min/Max", "Min Cannot be Greater than Max");
                 } else {
 
-                    Product newProduct = new Product(id, name, price, stock, min, max);
+                    Product product = new Product(id, name, price, stock, min, max);
 
                     for (Part selectedPartsOfProducts : selectedPartsOfProducts) {
-                        newProduct.addAssociatedParts(selectedPartsOfProducts);
+                        product.addAssociatedParts(selectedPartsOfProducts);
                     }
                     for (Part deletedPartsOfProducts : deletedPartsOfProducts) {
-                        newProduct.deleteAssociatedPart(deletedPartsOfProducts);
+                        product.deleteAssociatedPart(deletedPartsOfProducts);
                     }
                     Inventory.updateProduct(index, product);
                     stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
@@ -134,13 +135,13 @@ public class ModifyProduct implements Initializable {
 
 
     public void modifyDeleteHandler(ActionEvent actionEvent) {
+        Part removePart = tableViewModifyProductDelete.getSelectionModel().getSelectedItem();
         if(tableViewModifyProductDelete.getSelectionModel().isEmpty()) {
             Inventory.warningScreen("Error", "No Part was Selected", "Please choose a part from the list");
         }
         if(Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?")){
-            Part selectedPart = tableViewModifyProductDelete.getSelectionModel().getSelectedItem();
-            Inventory.deletePart(selectedPart);
-
+            selectedPartsOfProducts.remove(removePart);
+            deletedPartsOfProducts.add(removePart);
         }
     }
     public void runModifyProductSearch(ActionEvent actionEvent) { String query = textFieldSearchProduct.getText();
@@ -173,6 +174,9 @@ public class ModifyProduct implements Initializable {
         textFieldModifyProductPrice.setText(String.valueOf(selectedProduct.getPrice()));
         textFieldModifyProductMin.setText(String.valueOf(selectedProduct.getMin()));
         textFieldModifyProductMax.setText(String.valueOf(selectedProduct.getMax()));
+        product=selectedProduct;
+        selectedPartsOfProducts = product.getAllAssociatedParts();
+        tableViewModifyProductDelete.setItems(selectedPartsOfProducts);
 
 }
 
@@ -187,7 +191,7 @@ public class ModifyProduct implements Initializable {
         tableViewModifyProductDeleteNameColumn.setCellValueFactory((new PropertyValueFactory<>("name")));
         tableViewModifyProductDeleteInvColumn .setCellValueFactory(new PropertyValueFactory<>("stock"));
         tableViewModifyProductDeletePriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-        tableViewModifyProductDelete.setItems(selectedPartsOfProducts);
+
 
     }
 

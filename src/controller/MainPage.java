@@ -135,16 +135,21 @@ public class MainPage implements Initializable {
     }
     //Deletes the selected product.
     public void deleteProductHandler(ActionEvent actionEvent) {
+        Product associatedProduct = tableViewProducts.getSelectionModel().getSelectedItem();
         if (tableViewProducts.getSelectionModel().isEmpty()) {
             Inventory.warningScreen("Error", "No Part was Selected", "Please choose a part from the list");
         }
-        if (Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?")) {
-            Product selectedProduct = tableViewProducts.getSelectionModel().getSelectedItem();
-            Inventory.deleteProduct(selectedProduct);
+
+        if (associatedProduct.getAllAssociatedParts().size() != 0) {
+            Inventory.warningScreen("Error", "Parts Associated", "Cannot Delete Products with Associated Parts");
+        } else {
+            Inventory.confirmationScreen("Delete selected", "Are you sure you want to delete this part?");
+                Product selectedProduct = tableViewProducts.getSelectionModel().getSelectedItem();
+                Inventory.deleteProduct(selectedProduct);
+
 
         }
     }
-
     //search is functioning correctly, it searches through the product list by first reading the string  in the text-field,  then if any part of the string is found it will remake the table and add the found products to the table,
     // If a number is instead entered it will display products with the same ID but
     // only if the ID is an exact match.
