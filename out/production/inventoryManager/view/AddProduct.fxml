@@ -26,10 +26,10 @@
             <Font name="System Bold" size="20.0" />
         </font>
     </Label>
-    <Button layoutX="686.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Search" />
-    <TextField layoutX="529.0" layoutY="29.0" prefHeight="25.0" prefWidth="140.0" />
-    <Button layoutX="686.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
-    <Button layoutX="686.0" layoutY="425.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+    <Button layoutX="686.0" layoutY="29.0" mnemonicParsing="false" onAction="#runAddProductSearchHandler" prefHeight="25.0" prefWidth="60.0" text="Search" />
+    <TextField fx:id="textFieldAddProduct" layoutX="529.0" layoutY="29.0" prefHeight="25.0" prefWidth="140.0" />
+    <Button layoutX="686.0" layoutY="221.0" mnemonicParsing="false" onAction="#addProductHandler" prefHeight="25.0" prefWidth="60.0" text="Add" />
+    <Button layoutX="539.0" layoutY="425.0" mnemonicParsing="false" onAction="#runAddProductDeleteHandler" prefHeight="25.0" prefWidth="207.0" text="Removed Associated Part" />
     <Button layoutX="686.0" layoutY="461.0" mnemonicParsing="false" onAction="#addProductCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
     <Button layoutX="617.0" layoutY="461.0" mnemonicParsing="false" onAction="#saveProductHandler" prefHeight="25.0" prefWidth="60.0" text="Save" />
     <Label layoutX="20.0" layoutY="118.0" text="ID">
