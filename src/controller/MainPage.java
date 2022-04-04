@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 // largest errors were caused by simple things such as forgetting @FXML  before a tab causing all views to fail and stop the program from compiling, other common errors included missing \ for views
 //  logic errors:
 
@@ -52,7 +53,7 @@ public class MainPage implements Initializable {
     private TextField textFieldSearchParts;
     @FXML
     private TextField textFieldSearchProducts;
-
+    private static int index;
 
 
     //Buttons
@@ -68,15 +69,23 @@ public class MainPage implements Initializable {
     @FXML
     private void modifyPartHandler(ActionEvent actionEvent) throws IOException {
         Part selectedPart = tableViewParts.getSelectionModel().getSelectedItem();
+        index=Inventory.getAllParts().indexOf(selectedPart);
+
         if (selectedPart == null) {
             Inventory.warningScreen("Error", "No Part was Selected.", "Please choose a part from the list");
         } else {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/ModifyParts.fxml"));
+            loader.load();
+            ModifyPart modifyPartController = loader.getController();
+            modifyPartController.sendSelectedPart(tableViewParts.getSelectionModel().getSelectedItem());
+            Parent scene = loader.getRoot();
             stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-            scene = FXMLLoader.load(getClass().getResource("/view/ModifyParts.fxml"));
             stage.setScene(new Scene(scene));
             stage.show();
         }
     }
+
     // exits the program
     @FXML
     private void exitHandler(ActionEvent event) {
@@ -100,8 +109,13 @@ public class MainPage implements Initializable {
                 Inventory.warningScreen("Error", "No Product was Selected.", "Please choose a product from the list");
             }
             else {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/view/ModifyProducts.fxml"));
+                loader.load();
+                ModifyProduct modifyProductController = loader.getController();
+                modifyProductController.sendSelectedProduct(tableViewProducts.getSelectionModel().getSelectedItem());
+                Parent scene = loader.getRoot();
                 stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-                scene = FXMLLoader.load(getClass().getResource("/view/ModifyProducts.fxml"));
                 stage.setScene(new Scene(scene));
                 stage.show();
             }
@@ -185,12 +199,10 @@ public class MainPage implements Initializable {
         }
 
 
-
     //initialize
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Controller Initialized");
         tableViewPartsIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableViewPartsNameColumn.setCellValueFactory((new PropertyValueFactory<>("name")));
         tableViewPartsInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));

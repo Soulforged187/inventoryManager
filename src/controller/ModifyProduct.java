@@ -64,61 +64,55 @@ public class ModifyProduct implements Initializable {
     private Product product;
 
     @FXML
-    void modifyProductSaveHandler(ActionEvent actionEvent)throws IOException{
-    String partName = textFieldModifyProductName.getText();
-    String partInventory = textFieldModifyProductInv.getText();
-    String partCost = textFieldModifyProductPrice.getText();
-    String partMin = textFieldModifyProductMin.getText();
-    String partMax = textFieldModifyProductMax.getText();
+    void modifyProductSaveHandler(ActionEvent actionEvent)throws IOException {
+        String partName = textFieldModifyProductName.getText();
+        String partInventory = textFieldModifyProductInv.getText();
+        String partCost = textFieldModifyProductPrice.getText();
+        String partMin = textFieldModifyProductMin.getText();
+        String partMax = textFieldModifyProductMax.getText();
 
         if (partName == null || partName.length() == 0 || partInventory == null ||
-            partInventory.length() == 0 || partCost == null || partCost.length() == 0 ||
-            partMax.length() == 0 || partMin.length() == 0)
-    {
+                partInventory.length() == 0 || partCost == null || partCost.length() == 0 ||
+                partMax.length() == 0 || partMin.length() == 0) {
 
-        Inventory.warningScreen("Warning","One or more blank Fields","Fields cannot be blank");
-    }
+            Inventory.warningScreen("Warning", "One or more blank Fields", "Fields cannot be blank");
+        } else {
+            try {
+                int id = Integer.parseInt(modifyProductId.getText());
+                String name = textFieldModifyProductName.getText();
+                double price = Double.parseDouble(textFieldModifyProductPrice.getText());
+                int stock = Integer.parseInt(textFieldModifyProductInv.getText());
+                int min = Integer.parseInt(textFieldModifyProductMin.getText());
+                int max = Integer.parseInt(textFieldModifyProductMax.getText());
 
-        else {
+                if (stock < min || stock > max) {
 
-        try {
-            int id = Integer.parseInt(modifyProductId.getText());
-            String name = textFieldModifyProductName.getText();
-            double price = Double.parseDouble(textFieldModifyProductInv.getText());
-            int stock = Integer.parseInt(textFieldModifyProductPrice.getText());
-            int min = Integer.parseInt(textFieldModifyProductMin.getText());
-            int max = Integer.parseInt(textFieldModifyProductMax.getText());
+                    Inventory.warningScreen("Warning", "Check Min/Max", "Min Cannot be Greater than Max");
+                } else {
 
-            if (stock < min || stock > max) {
+                    Product newProduct = new Product(id, name, price, stock, min, max);
 
-                Inventory.warningScreen("Warning", "Check Min/Max", "Min Cannot be Greater than Max");
-            } else {
+                    for (Part selectedPartsOfProducts : selectedPartsOfProducts) {
+                        newProduct.addAssociatedParts(selectedPartsOfProducts);
+                    }
+                    for (Part deletedPartsOfProducts : deletedPartsOfProducts) {
+                        newProduct.deleteAssociatedPart(deletedPartsOfProducts);
+                    }
+                    Inventory.updateProduct(index, product);
+                    stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+                    scene = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
+                    stage.setScene(new Scene(scene));
+                    stage.show();
 
-                Product newProduct = new Product(id,name,price,stock,min,max);
-
-
-                for (Part selectedPartsOfProducts:selectedPartsOfProducts){
-                    newProduct.addAssociatedParts((selectedPartsOfProducts));
                 }
-                for (Part deletedPartsOfProducts:deletedPartsOfProducts){
-                    newProduct.deleteAssociatedPart(deletedPartsOfProducts);
 
-                }
-                Inventory.updateProduct(index, product);
-                stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-                scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
-                stage.setScene(new Scene(scene));
-                stage.show();
-
+            } catch (NumberFormatException e) {
+                Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
+                e.printStackTrace();
             }
 
-        } catch(NumberFormatException e) {
-            Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
         }
-
     }
-}
-
 
     public void modifyProductCancelHandler(ActionEvent actionEvent) throws IOException {
         Inventory.confirmationScreen("Cancel", "Are you sure you want to Cancel?");
@@ -129,7 +123,7 @@ public class ModifyProduct implements Initializable {
     }
 
     public void addProductsModifyHandler(ActionEvent actionEvent) throws IOException {
-        Part selectedPart = tableViewModifyProductAdd.getSelectionModel().getSelectedItem();
+        Part selectedPart = tableViewModifyProductDelete.getSelectionModel().getSelectedItem();
         if (selectedPart==null){
             Inventory.warningScreen("Warning","You must select a part" , " Select a part from the top table");
         }
@@ -171,6 +165,18 @@ public class ModifyProduct implements Initializable {
         tableViewModifyProductAdd.setItems(parts);
         tableViewModifyProductAdd.getSelectionModel().clearSelection();
     }
+
+    public void sendSelectedProduct (Product selectedProduct){
+        modifyProductId.setText(String.valueOf(selectedProduct.getId()));
+        textFieldModifyProductName.setText(selectedProduct.getName());
+        textFieldModifyProductInv.setText(String.valueOf(selectedProduct.getStock()));
+        textFieldModifyProductPrice.setText(String.valueOf(selectedProduct.getPrice()));
+        textFieldModifyProductMin.setText(String.valueOf(selectedProduct.getMin()));
+        textFieldModifyProductMax.setText(String.valueOf(selectedProduct.getMax()));
+
+}
+
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableViewModifyProductAddIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableViewModifyProductAddNameColumn.setCellValueFactory((new PropertyValueFactory<>("name")));
@@ -182,15 +188,6 @@ public class ModifyProduct implements Initializable {
         tableViewModifyProductDeleteInvColumn .setCellValueFactory(new PropertyValueFactory<>("stock"));
         tableViewModifyProductDeletePriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         tableViewModifyProductDelete.setItems(selectedPartsOfProducts);
-
-        Product product = Inventory.getAllProducts().get(index);
-        int productId = Inventory.getAllProducts().get(index).getId();
-        modifyProductId.setText("Auto-Gen: " + productId);
-        textFieldModifyProductName.setText(product.getName());
-        textFieldModifyProductInv.setText(Integer.toString(product.getStock()));
-        textFieldModifyProductPrice.setText(Double.toString(product.getPrice()));
-        textFieldModifyProductMin.setText(Integer.toString(product.getMin()));
-        textFieldModifyProductMax.setText(Integer.toString(product.getMax()));
 
     }
 

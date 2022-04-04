@@ -81,8 +81,8 @@ public class ModifyPart implements Initializable {
             try {
                 int id = Integer.parseInt(modifyPartId.getText());
                 String name = textFieldModifyPartName.getText();
-                double price = Double.parseDouble(textFieldModifyPartInv.getText());
-                int stock = Integer.parseInt(textFieldModifyPartPrice.getText());
+                int stock = Integer.parseInt(textFieldModifyPartInv.getText());
+                double price = Double.parseDouble(textFieldModifyPartPrice.getText());
                 int min = Integer.parseInt(textFieldModifyPartMin.getText());
                 int max = Integer.parseInt(textFieldModifyPartMax.getText());
                 String companyName = textFieldModifyPartDyn.getText();
@@ -117,7 +117,7 @@ public class ModifyPart implements Initializable {
                         Inventory.updatePart(index, inHousePart);
                     }
                     stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-                    scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
+                    scene = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
                     stage.setScene(new Scene(scene));
                     stage.show();
 
@@ -125,6 +125,7 @@ public class ModifyPart implements Initializable {
 
             } catch (NumberFormatException e) {
                 Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
+                e.printStackTrace();
             }
 
         }
@@ -138,18 +139,14 @@ public class ModifyPart implements Initializable {
         stage.show();
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Part part = Inventory.getAllParts().get(index);
-        int partID = Inventory.getAllParts().get(index).getId();
-        modifyPartId.setText("Auto-Gen: " + partID);
-        labelModifyPartName.setText(part.getName());
-        textFieldModifyPartInv.setText(Integer.toString(part.getStock()));
-        textFieldModifyPartPrice.setText(Double.toString(part.getPrice()));
-        textFieldModifyPartMin.setText(Integer.toString(part.getMin()));
-        textFieldModifyPartMax.setText(Integer.toString(part.getMax()));
-        if (part instanceof InHousePart) {
+    public void sendSelectedPart (Part selectedPart){
+        modifyPartId.setText(String.valueOf(selectedPart.getId()));
+        textFieldModifyPartName.setText(selectedPart.getName());
+        textFieldModifyPartInv.setText(String.valueOf(selectedPart.getStock()));
+        textFieldModifyPartPrice.setText(String.valueOf(selectedPart.getPrice()));
+        textFieldModifyPartMin.setText(String.valueOf(selectedPart.getMin()));
+        textFieldModifyPartMax.setText(String.valueOf(selectedPart.getMax()));
+        if (selectedPart instanceof InHousePart) {
             labelModifyPartName.setText("Machine ID");
             textFieldModifyPartDyn.setText(Integer.toString(((InHousePart) Inventory.getAllParts().get(index)).getMachineId()));
             radioModifyPartIn.setSelected(true);
@@ -160,5 +157,6 @@ public class ModifyPart implements Initializable {
         }
     }
 
-
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 }
