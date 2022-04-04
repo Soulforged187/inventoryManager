@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyProduct">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="783.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.ModifyProduct">
     <TableView fx:id="tableViewModifyProductAdd" layoutX="346.0" layoutY="65.0" prefHeight="150.0" prefWidth="400.0">
         <columns>
             <TableColumn fx:id="tableViewModifyProductAddIDColumn" prefWidth="100.0" text="Part ID" />
