@@ -16,11 +16,7 @@ import model.InHousePart;
 import model.Inventory;
 import model.OutSourcedPart;
 
-
-
-
 public class AddPart  implements Initializable {
-
     Parent scene;
     Stage stage;
     static int id;
@@ -44,22 +40,25 @@ public class AddPart  implements Initializable {
     @FXML
     private TextField textFieldAddPartMax;
 
-
-    // Had to redo these buttons several times as the first two methods didn't work, as clicking the buttons do not cause an event,
+    //RUNTIME ERROR
+    // Had to redo these buttons several times as the first  methods didn't work, first was using a radio button function,
+    // however toggling the buttons failed to execute properly, changed to  ActionEvent instead.
     // ended up implementing them as action events and corrected the error.
+    // these buttons toggle the fields and buttons to ensure the user can enter either specify the parts were internal or outsourced.
     @FXML
     void inHouseRadio(ActionEvent actionEvent){
         labelInOrOutPart.setText("Machine ID");
         textFieldParIds.setPromptText("Machine ID");
         outsourcedRad.setSelected(false);
     }
+    // these buttons toggle the fields and buttons to ensure the user can enter either specify the parts were internal or outsourced.
     @FXML
     void outsourcedRadio (ActionEvent actionEvent){
         labelInOrOutPart.setText("Company Name");
         textFieldParIds.setPromptText("Company Name");
         inHouseRad.setSelected(false);
     }
-
+// allows the user to leave the page without saving returning to the main screen.
     public void addPartCancelHandler(ActionEvent actionEvent) throws IOException {
         Inventory.confirmationScreen("Cancel", "Are you sure you want to Cancel?");
         stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
@@ -67,9 +66,16 @@ public class AddPart  implements Initializable {
         stage.setScene(new Scene(scene));
         stage.show();
     }
-    // This was the hardest section of the project, the solution that corrected the issue
+
+    // This was the hardest section of the project, attempting to ensure that both the data was accurately captured and that the logical restrictions to ensure both data integrity and data effectiveness.
+    // However, was the basis for the rest of the save function handlers.
+    // Save handler, was designed this way to ensure an easy logical flow, first it will check if the fields have been filled with a warning screen to prompt the user in the instance of empty data.
+    //  Next it will check the fields to fill temporary variables, then check to ensure Min and Max are logically filled and that current stock is following set conventions.
+    //  Radio buttons will be checked to have proper fields for parts built in house vs parts outsourced.
+    // IDs are auto generated to ensure strong primary keys.
+    //  A catch statement is added to ensure the program won't crash in instance that are not anticipated.
     @FXML
-    void buttonSaveHandler(ActionEvent actionEvent)throws IOException{
+    void buttonSaveHandler(ActionEvent actionEvent)throws IOException {
         String partName = textFieldAddPartName.getText();
         String partInventory = textFieldAddPartInv.getText();
         String partCost = textFieldAddPartPrice.getText();
@@ -82,10 +88,8 @@ public class AddPart  implements Initializable {
                 partMax.length() == 0 || partMin.length() == 0 ||
                 partCompanyName == null || partCompanyName.length() == 0) {
 
-            Inventory.warningScreen("Warning","Check Fields","Fields cannot be blank, Inputs must be correct type");
-            }
-
-        else {
+            Inventory.warningScreen("Warning", "Check Fields", "Fields cannot be blank, Inputs must be correct type");
+        } else {
 
             try {
                 String name = textFieldAddPartName.getText();
@@ -96,32 +100,28 @@ public class AddPart  implements Initializable {
                 String companyName = textFieldParIds.getText();
 
                 if (stock < min || stock > max) {
-
                     Inventory.warningScreen("Warning", "Check Inv/Min/Max", "Min Cannot be Greater than Max, Inventory cannot exceed Max");
                 } else {
 
-
                     if (inHouseRad.isSelected()) {
                         int machineId = Integer.parseInt(textFieldParIds.getText());
-                        Inventory.addPart(new InHousePart(++id,name, price, stock, min, max,machineId));
+                        Inventory.addPart(new InHousePart(++id, name, price, stock, min, max, machineId));
                     } else {
                         Inventory.addPart(new OutSourcedPart(++id, name, price, stock, min, max, companyName));
                     }
-                    stage = (Stage)((Button) actionEvent.getSource()).getScene().getWindow();
+                    stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
                     scene = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
                     stage.setScene(new Scene(scene));
                     stage.show();
                 }
 
             } catch (NumberFormatException e) {
-
+                e.printStackTrace();
                 Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
             }
 
         }
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

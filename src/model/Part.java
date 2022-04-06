@@ -2,7 +2,8 @@ package model;
 
 
 /**
- * @author Place Your Name Here
+ * Daniel Hansen-Jones, Part method was left unedited as per requirements,
+ * this is the logical model for Part.
  */
 public abstract class Part {
     private int id;

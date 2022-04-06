@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="783.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.ModifyProduct">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyProduct">
     <TableView fx:id="tableViewModifyProductAdd" layoutX="346.0" layoutY="65.0" prefHeight="150.0" prefWidth="400.0">
         <columns>
             <TableColumn fx:id="tableViewModifyProductAddIDColumn" prefWidth="100.0" text="Part ID" />
@@ -29,7 +29,7 @@
         </font>
     </Label>
     <TextField fx:id="textFieldSearchProduct" layoutX="528.0" layoutY="29.0" prefHeight="25.0" prefWidth="140.0" />
-    <Button layoutX="686.0" layoutY="221.0" mnemonicParsing="false" onAction="#addProductsModifyHandler" prefHeight="25.0" prefWidth="60.0" text="Add" />
+    <Button layoutX="539.0" layoutY="221.0" mnemonicParsing="false" onAction="#addProductsModifyHandler" prefHeight="25.0" prefWidth="207.0" text="Associate Part" />
     <Button layoutX="686.0" layoutY="461.0" mnemonicParsing="false" onAction="#modifyProductCancelHandler" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
     <Button layoutX="617.0" layoutY="461.0" mnemonicParsing="false" onAction="#modifyProductSaveHandler" prefHeight="25.0" prefWidth="60.0" text="Save" />
     <Button layoutX="686.0" layoutY="29.0" mnemonicParsing="false" onAction="#runModifyProductSearch" prefHeight="25.0" prefWidth="60.0" text="Search" />

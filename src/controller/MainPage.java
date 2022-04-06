@@ -56,7 +56,7 @@ public class MainPage implements Initializable {
     private static int index;
 
 
-    //Buttons
+    //Loads the Add Part Screen via Controller
     @FXML
     private void addPartHandler(ActionEvent actionEvent) throws IOException {
         stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
@@ -86,12 +86,6 @@ public class MainPage implements Initializable {
         }
     }
 
-    // exits the program
-    @FXML
-    private void exitHandler(ActionEvent event) {
-        System.out.println("Exiting Program");
-        System.exit(0);
-    }
     // opens the Add Product View
     @FXML
     private void addProductsHandler(ActionEvent actionEvent) throws IOException {
@@ -203,9 +197,13 @@ public class MainPage implements Initializable {
             tableViewParts.getSelectionModel().clearSelection();
         }
 
-
-    //initialize
-
+    // exits the program
+    @FXML
+    private void exitHandler(ActionEvent event) {
+        System.out.println("Exiting Program");
+        System.exit(0);
+    }
+    //initialize generates the views in the Main Page.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableViewPartsIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));

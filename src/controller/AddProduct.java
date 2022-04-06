@@ -12,16 +12,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+// Class to build the functionality to add products.
 public class AddProduct  implements Initializable {
-
-
-
     Parent scene;
     Stage stage;
 
@@ -46,8 +42,6 @@ public class AddProduct  implements Initializable {
     @FXML
     private TableColumn<Part, Double> tableViewAddProductDeletePriceColumn;
     @FXML
-    private Label textFieldAddIdn;
-    @FXML
     private TextField textFieldAddName;
     @FXML
     private TextField textFieldAddInventory;
@@ -61,9 +55,9 @@ public class AddProduct  implements Initializable {
     private TextField textFieldAddProduct;
     int id;
     @FXML
-    private ObservableList<Part> selectedPartsOfProducts = FXCollections.observableArrayList();
+    private final ObservableList<Part> selectedPartsOfProducts = FXCollections.observableArrayList();
 
-
+  // search functionality to see parts based on either full or partial name, or full ID.
     @FXML
      void runAddProductSearchHandler(ActionEvent actionEvent) throws IOException {
         String query = textFieldAddProduct.getText();
@@ -88,7 +82,12 @@ public class AddProduct  implements Initializable {
         tableViewAddProductAdd.setItems(parts);
         tableViewAddProductAdd.getSelectionModel().clearSelection();
     }
-
+    //Save handler for saving Products was designed this way to ensure an easy logical flow, first it will check if the fields have been filled with a warning screen to prompt the user in the instance of empty data.
+    // Next it will check the fields to fill temporary variables, then check to ensure Min and Max are logically filled and that current stock is following set conventions.
+    // The method will also check to ensure that a part was added as no products can be assembled without parts.
+    //Also, will allow the user to associate parts used to construct a product.
+    // IDs are auto generated to ensure strong primary keys.
+    // A catch statement is added to ensure the program won't crash in instance that are not anticipated.
     @FXML
     void saveProductHandler(ActionEvent actionEvent) throws IOException {
         String productName = textFieldAddName.getText();
@@ -104,7 +103,6 @@ public class AddProduct  implements Initializable {
 
             Inventory.warningScreen("Warning", "Check Fields", "Fields cannot be blank, Inputs must be correct type");
         } else {
-
             try {
                 String name = textFieldAddName.getText();
                 double price = Double.parseDouble(textFieldAddPrice.getText());
@@ -120,8 +118,8 @@ public class AddProduct  implements Initializable {
                     } else {
                         Product newProduct = (new Product(++id, name, price, stock, min, max));
 
-                        for (Part selectedPartsOfProducts : selectedPartsOfProducts) {
-                            newProduct.addAssociatedParts(selectedPartsOfProducts);
+                        for (Part selectedProductPart : selectedPartsOfProducts) {
+                            newProduct.addAssociatedParts(selectedProductPart);
                         }
                         Inventory.addProduct(newProduct);
                     }
@@ -132,13 +130,13 @@ public class AddProduct  implements Initializable {
                 }
 
             } catch (NumberFormatException e) {
-
-                Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
+                e.printStackTrace();
+                Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty, Or Have the wrong Data Type");
             }
-
         }
-    }
 
+    }
+    // Allows the user to associate a part to a product, ie showing which parts build the product.
     @FXML
     void addProductHandler(ActionEvent actionEvent) {
         Part selectedPart = tableViewAddProductAdd.getSelectionModel().getSelectedItem();
@@ -148,7 +146,7 @@ public class AddProduct  implements Initializable {
             selectedPartsOfProducts.add(selectedPart);
         }
     }
-
+    // allows the user to cancel all actions, not saving fields and returning to the main page.
     public void addProductCancelHandler(ActionEvent actionEvent) throws IOException {
         Inventory.confirmationScreen("Cancel", "Are you sure you want to Cancel?");
         stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
@@ -157,7 +155,7 @@ public class AddProduct  implements Initializable {
         stage.show();
     }
 
-
+  // allows the user to remove selected associated parts.
     public void runAddProductDeleteHandler(ActionEvent actionEvent) {
         if (tableViewAddProductDelete.getSelectionModel().isEmpty()) {
             if (tableViewAddProductDelete.getSelectionModel().isEmpty()) {
@@ -170,7 +168,7 @@ public class AddProduct  implements Initializable {
             }
         }
     }
-
+    // sends data to the table views from previous information on other screens.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableViewAddProductAddIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));

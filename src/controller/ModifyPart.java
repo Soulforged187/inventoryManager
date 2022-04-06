@@ -23,7 +23,7 @@ public class ModifyPart implements Initializable {
 
     Parent scene;
     Stage stage;
-
+//View fx-id labels used to add functionality to screens.
     @FXML
     private RadioButton radioModifyPartIn;
     @FXML
@@ -45,14 +45,14 @@ public class ModifyPart implements Initializable {
     @FXML
     private Label modifyPartId;
     int index;
-
+    // This is used to set the radio buttons and related fields to the proper values.
     @FXML
     void radioModifyPartInHouse(ActionEvent actionEvent) {
         labelModifyPartName.setText("Machine ID");
         textFieldModifyPartDyn.setPromptText("Machine ID");
         radioModifyPartOut.setSelected(false);
     }
-
+    // This is used to set the radio buttons and related fields to the proper values.
     @FXML
     void radioModifyPartOutsourced(ActionEvent actionEvent) {
         labelModifyPartName.setText("Company Name");
@@ -60,7 +60,11 @@ public class ModifyPart implements Initializable {
         radioModifyPartIn.setSelected(false);
     }
 
-
+    //Save handler, was designed this way to ensure an easy logical flow, first it will check if the fields have been filled with a warning screen to prompt the user in the instance of empty data.
+    // Next it will check the fields to fill temporary variables, then check to ensure Min and Max are logically filled and that current stock is following set conventions.
+    // Radio buttons will be checked to have proper fields for parts built in house vs parts outsourced.
+    // IDs are auto generated to ensure strong primary keys.
+    // A catch statement is added to ensure the program won't crash in instance that are not anticipated.
     @FXML
     void saveModifyPartHandler(ActionEvent actionEvent) throws IOException {
         String partName = textFieldModifyPartName.getText();
@@ -77,7 +81,6 @@ public class ModifyPart implements Initializable {
 
             Inventory.warningScreen("Warning", "One or more blank Fields", "Fields cannot be blank");
         } else {
-
             try {
                 int id = Integer.parseInt(modifyPartId.getText());
                 String name = textFieldModifyPartName.getText();
@@ -124,13 +127,13 @@ public class ModifyPart implements Initializable {
                 }
 
             } catch (NumberFormatException e) {
-                Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty");
+                Inventory.warningScreen("Warning", "Error", "One or More Fields are Empty, Or Have the wrong Data Type");
                 e.printStackTrace();
             }
 
         }
     }
-
+// This will load the view for the main page, allowing the user to cancel the add without saving.
     public void modifyPartCancelHandler(ActionEvent actionEvent) throws IOException {
         Inventory.confirmationScreen("Cancel", "Are you sure you want to Cancel?");
         stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
@@ -138,7 +141,7 @@ public class ModifyPart implements Initializable {
         stage.setScene(new Scene(scene));
         stage.show();
     }
-
+// this function is designed to send the data to Modify Part text fields of whatever Part was selected, allowing the user to modify more easily.
     public void sendSelectedPart (Part selectedPart){
         modifyPartId.setText(String.valueOf(selectedPart.getId()));
         textFieldModifyPartName.setText(selectedPart.getName());
